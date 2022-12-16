@@ -10,6 +10,7 @@ function foodSearch() {
     console.log(foodInput);
 
     findFoodFacts(foodInput);
+    findRecipe(foodInput);
 }
 
 
@@ -24,7 +25,6 @@ function findFoodFacts(food) {
             'X-RapidAPI-Host': 'edamam-food-and-grocery-database.p.rapidapi.com'
         }
     };
-
 
 fetch('https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=' + food + '', options)
 	// .then(response => response.json())
@@ -47,52 +47,26 @@ function foodInfo (info) {
     document.getElementById("PROCNT").innerHTML = "Protein: " + info.hints[0].food.nutrients.PROCNT + "g";
 
 
-    var img = document.querySelector("img");
-    img.src = info.hints[0].food.image;
-
-
+    var foodImg = document.getElementById("foodPicture");
+    foodImg.src = info.hints[0].food.image;
 }
 
 
 
 
 
-// var myHeaders = new Headers();
-// myHeaders.append("apikey", "68fJDTBKHjPohvLHpGu9o5ZuGCiLAIEl");
-
-// var requestOptions = {
-//   method: 'GET',
-//   redirect: 'follow',
-//   headers: myHeaders
-// };
-
-// fetch("https://api.apilayer.com/spoonacular/recipes/autocomplete?query=chicken", requestOptions)
-// //   .then(response => response.text())
-// //   .then(result => console.log(result))
-// //   .catch(error => console.log('error', error));
-
-//     .then(function(response) {return response.json() })
-//     .then(function(data) {
-//         console.log(data);
-//         foodThings(data);
-//     });
-
-//   function foodThings(info) {
-//     document.getElementById("foodStuff").innerHTML = info[0].title;
-
-//     console.log(info[0].title);
-//   }
 
 
-
-
-
+// Fetching the 1st API
+function findRecipe (food) {
 
 var APIKey1 = "4e66bd31b33a6e725fd7414ce112e3bd";
 var APIid = "bdaa3a33";
 var recipe = 'chicken';
-var queryURL1 = "https://api.edamam.com/api/recipes/v2?type=public&q=" + recipe + "&app_id=" + APIid + "&app_key=" + APIKey1;
+var queryURL1 = "https://api.edamam.com/api/recipes/v2?type=public&q=" + food + "&app_id=" + APIid + "&app_key=" + APIKey1;
 var responseText = document.getElementById('response-text');
+
+getAPI(queryURL1);
 
 function getAPI(queryURL1) {
     fetch(queryURL1)
@@ -107,12 +81,72 @@ function getAPI(queryURL1) {
             myDiv.textContent = data.recipeName;
             document.querySelector("#response-text").appendChild(myDiv);
             console.log(data);
+
+            firstAPIInfo(data);
         })
 
 }
+}
 
-getAPI(queryURL1);
+// getAPI(queryURL1);
 
+
+function firstAPIInfo (info) {
+    var recipeImg = document.getElementById("recipePicture");
+    recipeImg.src = info.hits[0].recipe.image;
+
+    document.getElementById("label").innerHTML = "Dish Name: " + info.hits[0].recipe.label;
+    document.getElementById("calories").innerHTML = "Calories: " + info.hits[0].recipe.calories;
+    document.getElementById("dietLabels").innerHTML = "Diet Labels: " + toString(info.hits[0].dietLabels);
+    document.getElementById("healthLabels").innerHTML = " Health Labels: " + info.hits[0].healthLabels;
+
+
+    // console.log(toString(info.hits[0].dietLabels));
+
+
+
+
+    
+
+        for(let i=0; i<20; i++) {
+            document.getElementById("arrayInfo").innerHTML = " Array: " + info.hits[i].recipe.label;
+            
+            var recipes = info.hits[i].recipe.label;
+            var recipeList = document.getElementById("arrayInfo").innerHTML;
+            
+
+            var myDiv = document.createElement('div');
+            myDiv.setAttribute("id", "myId");
+            myDiv.classList.add("myClass");
+            myDiv.textContent = recipes;
+            document.getElementById("arrayInfo").appendChild(myDiv);
+
+            console.log(info.hits[i].recipe.label);
+    };
+
+    
+}
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Fetching the 2nd API
 var APIkey2="450378b744e7b7f6a628e60f5546bab8";
 var APIid2 = "3842e9bc";
 var health = "3 eggs";
