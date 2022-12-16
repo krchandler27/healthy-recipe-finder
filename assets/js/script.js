@@ -57,33 +57,6 @@ function foodInfo (info) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // var myHeaders = new Headers();
 // myHeaders.append("apikey", "68fJDTBKHjPohvLHpGu9o5ZuGCiLAIEl");
 
@@ -109,6 +82,12 @@ function foodInfo (info) {
 
 //     console.log(info[0].title);
 //   }
+
+
+
+
+
+
 var APIKey1 = "4e66bd31b33a6e725fd7414ce112e3bd";
 var APIid = "bdaa3a33";
 var recipe = 'chicken';
