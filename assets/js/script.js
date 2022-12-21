@@ -88,18 +88,39 @@ function firstAPIInfo(info) {
   document.getElementById("label").innerHTML =
     "Dish Name: " + info.hits[0].recipe.label;
   document.getElementById("calories").innerHTML =
-    "Calories: " + info.hits[0].recipe.calories;
+    "Calories: " + (info.hits[0].recipe.calories).toFixed(2);
 
 
+    for(var i = 0; i < info.hits[0].recipe.ingredientLines.length; i++) {
+        console.log(info.hits[0].recipe.ingredientLines.length);
+    
+        var ingredients = info.hits[0].recipe.ingredientLines[i];
+    
+        var ingredientInfo = document.createElement("li");
+        var ingredientInfoBox = document.createTextNode(ingredients);
+        ingredientInfo.appendChild(ingredientInfoBox);
+        document.getElementById("ingredientLines").appendChild(ingredientInfo);
+    }    
+
+    // Link to the cooking directions
+    var directions = info.hits[0].recipe.url;
+    var directionsInfo = document.createElement("a");
+    var directionsInfoBox = document.createTextNode(directions);
+    directionsInfo.appendChild(directionsInfoBox);
+    directionsInfo.title = "Cooking Directions";
+    directionsInfo.href = directions;
+    document.getElementById("directions").appendChild(directionsInfo);
+
+
+
+    
+for (var i = 0; i < 5; i++) {
     console.log((info.hits[0].recipe.digest).length);
-  for (var i = 0; i < 5; i++) {
-    // document.getElementById("digest").innerHTML = info.hits[i].recipe.digest[i].label;
-    // console.log(info.hits[i].recipe.digest[i].label);
 
     var digestion =
       info.hits[i].recipe.digest[i].label +
       ": " +
-      info.hits[i].recipe.digest[i].total;
+      (info.hits[i].recipe.digest[i].total).toFixed(2);
 
     var digestInfo = document.createElement("li");
     var digestInfoBox = document.createTextNode(digestion);
@@ -107,24 +128,38 @@ function firstAPIInfo(info) {
     document.getElementById("digest").appendChild(digestInfo);
   }
 
-  document.getElementById("dietLabels").innerHTML =
-    "Diet Labels: " + toString(info.hits[0].dietLabels);
-  document.getElementById("healthLabels").innerHTML =
-    " Health Labels: " + info.hits[0].healthLabels;
+for(var i = 0; i < info.hits[0].recipe.dietLabels.length; i++) {
+    console.log(info.hits[0].recipe.dietLabels.length);
 
+    var dietTypes = info.hits[0].recipe.dietLabels[i];
+
+    var dietInfo = document.createElement("li");
+    var dietInfoBox = document.createTextNode(dietTypes);
+    dietInfo.appendChild(dietInfoBox);
+    document.getElementById("dietLabels").appendChild(dietInfo);
+
+}
+
+for(var i = 0; i < info.hits[0].recipe.healthLabels.length; i++) {
+    console.log(info.hits[0].recipe.healthLabels.length);
+
+    var health = info.hits[0].recipe.healthLabels[i];
+
+    var healthInfo = document.createElement("li");
+    var healthInfoBox = document.createTextNode(health);
+    healthInfo.appendChild(healthInfoBox);
+    document.getElementById("healthLabels").appendChild(healthInfo);
+}
   
 
   //  Placeing fetched info from an array onto the page for user to see.
   for (let i = 0; i < 5; i++) {
-    // document.getElementById("arrayInfo").innerHTML =
-    //   " Array: " + info.hits[i].recipe.label;
 
     var recipes = info.hits[i].recipe.label;
-    // var recipeList = document.getElementById("arrayInfo").innerHTML;
+    
     var recipeButtonList = document.createElement("li");
     var recipeButton = document.createElement("BUTTON");
     recipeButton.setAttribute("data-recipe", recipes)
-
 
     var recipeButtonBox = document.createTextNode(recipes);
     recipeButtonList.appendChild(recipeButton);
@@ -132,20 +167,17 @@ function firstAPIInfo(info) {
     document.getElementById("recipeList").appendChild(recipeButtonList);
 
     recipeButton.onclick = function () {
-    //   var recipe = recipes.value;
 
     var recipeButtonClick = event.target.getAttribute("data-recipe");
 
       console.log(event.target.getAttribute("data-recipe"));
       console.log(recipeButtonClick);
-      
+
       findFoodFacts(recipeButtonClick);
     //   findRecipe(recipe);
 
-    //   console.log(recipes.value);
-    };
-
     
+    };
 
     console.log(info.hits[i].recipe.label);
   }
