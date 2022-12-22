@@ -1,7 +1,12 @@
 var foodItem = document.getElementById("foodItem");
 var searchButton = document.getElementById("searchButton");
 
-
+foodItem.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("searchButton").click();
+  }
+});
 
 function foodSearch() {
   var food = foodItem.value;
@@ -19,13 +24,12 @@ foodItem.addEventListener("keypress", function (event) {
 
 // // Fetching the info from 1st API
 function findFoodFacts(food) {
-
   const options = {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'X-RapidAPI-Key': '2baebc70a1mshd27e67c12d60db1p17859ejsn0d50f086b942',
-      'X-RapidAPI-Host': 'edamam-food-and-grocery-database.p.rapidapi.com'
-    }
+      "X-RapidAPI-Key": "2baebc70a1mshd27e67c12d60db1p17859ejsn0d50f086b942",
+      "X-RapidAPI-Host": "edamam-food-and-grocery-database.p.rapidapi.com",
+    },
   };
 
   fetch('https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=' + food + '', options)
@@ -230,9 +234,9 @@ function firstAPIInfo(info) {
     recipeButton.appendChild(recipeButtonBox);
     document.getElementById("recipeList").appendChild(recipeButtonList);
 
-    recipeButton.onclick = function () {
 
-    var recipeButtonClick = event.target.getAttribute("data-recipe");
+    recipeButton.onclick = function () {
+      var recipeButtonClick = event.target.getAttribute("data-recipe");
 
       console.log(event.target.getAttribute("data-recipe"));
       console.log(recipeButtonClick);
@@ -241,6 +245,5 @@ function firstAPIInfo(info) {
     };
 
     console.log(info.hits[i].recipe.label);
-  }
 }
-
+}
