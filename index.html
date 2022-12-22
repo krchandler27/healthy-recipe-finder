@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
-        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Project1</title>
 </head>
@@ -16,22 +17,26 @@
         <h1>Food Nutrition</h1>
 
         <div>
-            <form class="pure-form">
-                <input id="foodItem" type="search" class="pure-input-rounded" />
-                <button id="searchButton" type="button" onclick="foodSearch()" class="pure-button">Get in my belly</button>
+            <form class="column is-one-quarter">
+                <input id="foodItem" type="search" class="input is-rounded" />
+                <button id="searchButton" type="button" onclick="foodSearch()" class="button">Get in my belly</button>
             </form>
         </div>
     </header>
 
     <main class="foodNutrition">
-        <h1>Food Facts</h1>
+        <!-- <h1>Food Facts</h1> -->
         <ul>
+
             <img id="foodPicture" />
-            <li id="CHOCDF" class="nutItem"></li>
+            <div id="foodName"></div>
+            <div id="nutrientsInfo"></div>
+
+            <!-- <li id="CHOCDF" class="nutItem"></li>
             <li id="ENERC_KCAL" class="nutItem"></li>
             <li id="FAT" class="nutItem"></li>
             <li id="FIBTG" class="nutItem"></li>
-            <li id="PROCNT" class="nutItem"></li> 
+            <li id="PROCNT" class="nutItem"></li>  -->
         </ul>
     </main>
 
@@ -39,28 +44,25 @@
         <div id="foodStuff"></div>
     </section>
 
-    <section id="firstAPI">
+    <section id="firstAPI" class="columns is-multiline is-mobile">
         <div id="response-text"> </div>
 
-        <img id="recipePicture" />
-        <div id="label"></div>
-        <div id="calories"></div>
+        <img id="recipePicture" class="column is-half" />
+        <div id="label" class="column is-half"></div>
         <br>
-        <div id="ingredientLines"></div>
+        <div id="calories" class="column is-full"></div>
         <br>
-        <div id="directions"></div>
+        <div id="ingredientLines" class="column is-half"></div>
         <br>
-        <div id="digest"></div>
+        <div id="directions" class="column is-half"></div>
         <br>
-        <div id="dietLabels"></div>
+        <div id="digest" class="column is-one-third"></div>
         <br>
-        <div id="healthLabels"></div>
+        <div id="dietLabels" class="column is-one-third"></div>
+        <br>
+        <div id="healthLabels" class="column is-one-third"></div>
         <br>
         <div id="recipeList"></div>
-
-
-
-        <div id="arrayInfo"></div>
     </section>
 
 
