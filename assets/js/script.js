@@ -1,9 +1,10 @@
 var foodItem = document.getElementById("foodItem");
 
 function foodSearch() {
-    console.log(food);
   var food = foodItem.value;
   console.log(food);
+
+  
 
   findFoodFacts(food);
   findRecipe(food);
@@ -33,14 +34,47 @@ fetch('https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=' + f
 
 // Place the fetched information into the web page
 function foodInfo (info) {
-    document.getElementById("CHOCDF").innerHTML = "Carbohydrate, by difference: " + info.hints[0].food.nutrients.CHOCDF + "g";
-    document.getElementById("ENERC_KCAL").innerHTML = "Energy: " + info.hints[0].food.nutrients.ENERC_KCAL + "kcal";
-    document.getElementById("FAT").innerHTML = " Total lipid (fat) content: " + (info.hints[0].food.nutrients.FAT) + "g";
-    document.getElementById("FIBTG").innerHTML = "Fiber, total dietary: " + info.hints[0].food.nutrients.FIBTG + "g";
-    document.getElementById("PROCNT").innerHTML = "Protein: " + info.hints[0].food.nutrients.PROCNT + "g";
+    // nutrientsList(info);
+
+    var foodItemName = document.createElement("h2");
+    foodItemName.innerHTML = info.text.charAt(0).toUpperCase() +
+    info.text.slice(1);
+    document.getElementById("foodName").style.color = "blue";
+    document.getElementById("foodName").style.fontSize = "35px";
+
 
     var foodImg = document.getElementById("foodPicture");
     foodImg.src = info.hints[0].food.image;
+
+    var carbList = document.createElement("li");
+    carbList.innerHTML = "Carbohydrate, by difference: " + info.hints[0].food.nutrients.CHOCDF + "g";
+    
+    var energyList = document.createElement("li");
+    energyList.innerHTML = "Energy: " + info.hints[0].food.nutrients.ENERC_KCAL + "kcal";
+
+    var fatList = document.createElement("li");
+    fatList.innerHTML = "Total lipid (fat) content: " + (info.hints[0].food.nutrients.FAT) + "g";
+
+    var fiberList = document.createElement("li");
+    fiberList.innerHTML = "Fiber, total dietary: " + info.hints[0].food.nutrients.FIBTG + "g";
+
+    var proteinList = document.createElement("li");
+    proteinList.innerHTML = "Protein: " + info.hints[0].food.nutrients.PROCNT + "g";
+
+    document.getElementById("foodName").appendChild(foodItemName);
+    document.getElementById("nutrientsInfo").appendChild(carbList);
+    document.getElementById("nutrientsInfo").appendChild(energyList);
+    document.getElementById("nutrientsInfo").appendChild(fatList);
+    document.getElementById("nutrientsInfo").appendChild(fiberList);
+    document.getElementById("nutrientsInfo").appendChild(proteinList);
+
+//     function nutrientsList (info) {
+//     document.getElementById("CHOCDF").innerHTML = "Carbohydrate, by difference: " + info.hints[0].food.nutrients.CHOCDF + "g";
+//     document.getElementById("ENERC_KCAL").innerHTML = "Energy: " + info.hints[0].food.nutrients.ENERC_KCAL + "kcal";
+//     document.getElementById("FAT").innerHTML = "Total lipid (fat) content: " + (info.hints[0].food.nutrients.FAT) + "g";
+//     document.getElementById("FIBTG").innerHTML = "Fiber, total dietary: " + info.hints[0].food.nutrients.FIBTG + "g";
+//     document.getElementById("PROCNT").innerHTML = "Protein: " + info.hints[0].food.nutrients.PROCNT + "g";
+// }
 }
 
 // Fetching the 1st API
@@ -85,24 +119,39 @@ function firstAPIInfo(info) {
   var recipeImg = document.getElementById("recipePicture");
   recipeImg.src = info.hits[0].recipe.image;
 
-  document.getElementById("label").innerHTML =
-    "Dish Name: " + info.hits[0].recipe.label;
+  
+  document.getElementById("label").innerHTML = info.hits[0].recipe.label;
+  document.getElementById("label").style.color = "green";
+  document.getElementById("label").style.fontWeight = "bolder";
+
   document.getElementById("calories").innerHTML =
     "Calories: " + (info.hits[0].recipe.calories).toFixed(2);
 
+   
+
+// Displaying the ingredients list
+var ingredientTitle = document.createElement("h2");
+    ingredientTitle.innerHTML = "Ingredients:";
+    document.getElementById("ingredientLines").appendChild(ingredientTitle);
+    document.getElementById("ingredientLines").classList.add("foodInformation");
 
     for(var i = 0; i < info.hits[0].recipe.ingredientLines.length; i++) {
         console.log(info.hits[0].recipe.ingredientLines.length);
     
         var ingredients = info.hits[0].recipe.ingredientLines[i];
-    
         var ingredientInfo = document.createElement("li");
-        var ingredientInfoBox = document.createTextNode(ingredients);
+        var ingredientInfoBox = document.createTextNode(ingredients)
         ingredientInfo.appendChild(ingredientInfoBox);
-        document.getElementById("ingredientLines").appendChild(ingredientInfo);
+        document.getElementById("ingredientLines").appendChild(ingredientInfo); 
     }    
 
-    // Link to the cooking directions
+    
+    // Displaying link to the cooking directions
+    var directionTitle = document.createElement("h2");
+    directionTitle.innerHTML = "Directions";
+    document.getElementById("directions").appendChild(directionTitle);
+    document.getElementById("directions").classList.add("foodInformation");
+
     var directions = info.hits[0].recipe.url;
     var directionsInfo = document.createElement("a");
     var directionsInfoBox = document.createTextNode(directions);
@@ -113,20 +162,31 @@ function firstAPIInfo(info) {
 
 
 
-    
-for (var i = 0; i < 5; i++) {
+// Displaying the nutrition facts
+var nutritionFactsTitle = document.createElement("h2");
+    nutritionFactsTitle.innerHTML = "Nutritional Information:";
+    document.getElementById("digest").appendChild(nutritionFactsTitle);
+    document.getElementById("digest").classList.add("foodInformation");
+
+for (var i = 0; i < info.hits[0].recipe.digest.length; i++) {
     console.log((info.hits[0].recipe.digest).length);
 
     var digestion =
-      info.hits[i].recipe.digest[i].label +
+      info.hits[0].recipe.digest[i].label +
       ": " +
-      (info.hits[i].recipe.digest[i].total).toFixed(2);
+      (info.hits[0].recipe.digest[i].total).toFixed(2);
 
     var digestInfo = document.createElement("li");
     var digestInfoBox = document.createTextNode(digestion);
     digestInfo.appendChild(digestInfoBox);
     document.getElementById("digest").appendChild(digestInfo);
   }
+
+//   Displaying the diet labels
+var dietTypeTitle = document.createElement("h2");
+    dietTypeTitle.innerHTML = "Diet Type(s):";
+    document.getElementById("dietLabels").appendChild(dietTypeTitle);
+    document.getElementById("dietLabels").classList.add("foodInformation");
 
 for(var i = 0; i < info.hits[0].recipe.dietLabels.length; i++) {
     console.log(info.hits[0].recipe.dietLabels.length);
@@ -140,6 +200,12 @@ for(var i = 0; i < info.hits[0].recipe.dietLabels.length; i++) {
 
 }
 
+//  Displaying the health labels
+var healthLabelsTitle = document.createElement("h2");
+    healthLabelsTitle.innerHTML = "Health Labels:";
+    document.getElementById("healthLabels").appendChild(healthLabelsTitle);
+    document.getElementById("healthLabels").classList.add("foodInformation");
+
 for(var i = 0; i < info.hits[0].recipe.healthLabels.length; i++) {
     console.log(info.hits[0].recipe.healthLabels.length);
 
@@ -152,20 +218,25 @@ for(var i = 0; i < info.hits[0].recipe.healthLabels.length; i++) {
 }
   
 
-  //  Placeing fetched info from an array onto the page for user to see.
+  //  Displaying additional recipes.
+  var recipeListTitle = document.createElement("h2");
+      recipeListTitle.innerHTML = "Additional Recipes:";
+      document.getElementById("recipeList").appendChild(recipeListTitle);
+      document.getElementById("recipeList").classList.add("foodInformation");
+
   for (let i = 0; i < 5; i++) {
 
     var recipes = info.hits[i].recipe.label;
     
     var recipeButtonList = document.createElement("li");
     var recipeButton = document.createElement("BUTTON");
-    recipeButton.setAttribute("data-recipe", recipes)
+    recipeButton.setAttribute("data-recipe", recipes);
 
     var recipeButtonBox = document.createTextNode(recipes);
     recipeButtonList.appendChild(recipeButton);
     recipeButton.appendChild(recipeButtonBox);
     document.getElementById("recipeList").appendChild(recipeButtonList);
-
+    
     recipeButton.onclick = function () {
 
     var recipeButtonClick = event.target.getAttribute("data-recipe");
@@ -174,14 +245,24 @@ for(var i = 0; i < info.hits[0].recipe.healthLabels.length; i++) {
       console.log(recipeButtonClick);
 
       findFoodFacts(recipeButtonClick);
-    //   findRecipe(recipe);
+    //   findRecipe(recipeButtonClick);
 
-    
     };
 
     console.log(info.hits[i].recipe.label);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 // Fetching the 2nd API
 var APIkey2 = "450378b744e7b7f6a628e60f5546bab8";
