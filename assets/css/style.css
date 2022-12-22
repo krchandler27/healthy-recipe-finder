@@ -55,6 +55,10 @@ h2 {
     font-weight: bold;
 }
 
+ul {
+    list-style-type:circle
+}
+
 #searchButton {
     margin-left: 25%;
     background-color: rgb(103, 145, 84);
