@@ -13,11 +13,16 @@ function removeOldInfo() {
 function foodSearch() {
   var food = foodItem.value;
   console.log(food);
-
   findFoodFacts(food);
   findRecipe(food);
 }
 
+foodItem.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById("searchButton").click();
+  }
+});
 
 
 // // Fetching the information from API
@@ -46,11 +51,15 @@ fetch('https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=' + f
 function foodInfo (info) {
     // nutrientsList(info);
 
+    document.getElementById("foodName").innerHTML = "";
+    document.getElementById("nutrientsInfo").innerHTML = "";
+   
+    
+
     var foodItemName = document.createElement("h2");
-    foodItemName.innerHTML = info.text.charAt(0).toUpperCase() +
-    info.text.slice(1);
-    document.getElementById("foodName").style.color = "blue";
-    document.getElementById("foodName").style.fontSize = "35px";
+    foodItemName.innerHTML = info.hints[0].food.label.charAt(0).toUpperCase()+info.hints[0].food.label.slice(1);
+    document.getElementById("foodName");
+    document.getElementById("foodName");
 
 
     var foodImg = document.getElementById("foodPicture");
@@ -126,13 +135,20 @@ function findRecipe(food) {
 
 // Putting the fetched information onto the page making it visible to the user.
 function firstAPIInfo(info) {
+  document.getElementById("directions").innerHTML = "";
+  document.getElementById("ingredientLines").innerHTML = "";
+  document.getElementById("digest").innerHTML = "";
+  document.getElementById("recipeList").innerHTML = "";
+  document.getElementById("healthLabels").innerHTML = "";
+  document.getElementById("dietLabels").innerHTML = "";
+
   var recipeImg = document.getElementById("recipePicture");
   recipeImg.src = info.hits[0].recipe.image;
 
   
   document.getElementById("label").innerHTML = info.hits[0].recipe.label;
-  document.getElementById("label").style.color = "green";
-  document.getElementById("label").style.fontWeight = "bolder";
+  document.getElementById("label");
+  document.getElementById("label");
 
   document.getElementById("calories").innerHTML =
     "Calories: " + (info.hits[0].recipe.calories).toFixed(2);
@@ -238,7 +254,7 @@ for(var i = 0; i < info.hits[0].recipe.healthLabels.length; i++) {
 
     var recipes = info.hits[i].recipe.label;
     
-    var recipeButtonList = document.createElement("li");
+    var recipeButtonList = document.createElement("ul");
     var recipeButton = document.createElement("BUTTON");
     recipeButton.setAttribute("data-recipe", recipes);
 
@@ -255,90 +271,11 @@ for(var i = 0; i < info.hits[0].recipe.healthLabels.length; i++) {
       console.log(recipeButtonClick);
 
       findFoodFacts(recipeButtonClick);
-    //   findRecipe(recipeButtonClick);
+      findRecipe(recipeButtonClick);
 
     };
 
     console.log(info.hits[i].recipe.label);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// Fetching the 2nd API
-var APIkey2 = "450378b744e7b7f6a628e60f5546bab8";
-var APIid2 = "3842e9bc";
-var health = "3 eggs";
-var queryURL2 =
-  "https://api.edamam.com/api/nutrition-data?" +
-  "app_id=" +
-  APIid2 +
-  "&app_key=" +
-  APIkey2 +
-  "&nutrition-type=cooking&ingr=" +
-  health;
-var responseText = document.getElementById("response-text");
-//https://api.edamam.com/api/nutrition-data?app_id=3842e9bc&app_key=450378b744e7b7f6a628e60f5546bab8&nutrition-type=cooking&ingr=3%20eggs
-function getAPI(queryURL2) {
-  fetch(queryURL2)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      var myDiv = document.createElement("div");
-      myDiv.setAttribute("id", "myId");
-      myDiv.classList.add("myClass");
-      myDiv.textContent = data.recipeName;
-      document.querySelector("#response-text").appendChild(myDiv);
-      console.log(data);
-    });
-}
-getAPI(queryURL2);
-
-//  var APIkey2="450378b744e7b7f6a628e60f5546bab8";
-//  var APIid2 = "3842e9bc";
-
-//testing from here down
-
-// $("#search-button").on("click", function () {
-//     var ingredients = $("#search-value").val();
-//     $("#search-value").val("");
-//     nutritionFacts(ingredients);
-//   });
-
-//   //search button enter key 
-//   $("#search-button").keypress(function (event) {
-//     var keycode = (event.keyCode ? event.keyCode : event.which);
-//     if (keycode === 13) {
-//       nutritionFacts(ingredients);
-//     }
-//   });
-
-
-//   function nutritionFacts(ingredients) {
-//     $.ajax({
-//       type: "GET",
-//       url: "https://api.edamam.com/api/nutrition-data?" + "app_id=" + APIid2 + "&app_key=" + APIkey2 + "&nutrition-type=cooking&ingr=" + ingredients
-
-//     }).then(function (data) {
-//       console.log(data);
-//       $("#nurtition-data").html("<h4 class=\"mt-3\">Facts:</h4>").append("<div class=\"row\">");
-
-//         })
-//     }
-//   findFoodFacts(food);
-//   findRecipe(food);
-// }
-
-
-
 

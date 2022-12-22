@@ -1,32 +1,53 @@
 
 
+
+html {
+    background-color: rgb(206, 206, 206);
+}
+
 body {
     background-color: rgb(206, 206, 206);
-    padding: 15px 0 0 15px;
+    height: 100%;
+    width: 100%;
 }
 
 header h1 {
     color: rgb(103, 145, 84);
     font-size: 40px;
     font-weight: bolder;
-    
+    margin-left: 2%;
 }
 
 #foodName {
     text-align: center;
-    font-size:medium;
-    color: black !important;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(103, 145, 84);
     
 }
 
 #foodPicture {
    height: auto;
-   width: 100%;  
+   width: 100%; 
+   padding: 3%; 
 }
 
+#label {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(103, 145, 84);
+}
+
+#calories {
+    text-align: center;
+    font-size: medium;
+    font-weight: bold;
+}
 h2 {
     font-size: 30px;
-    font-weight: bold !important;
+    font-weight: bold;
+    color: rgb(103, 145, 84);
 }
 .foodNutrition {
     text-size-adjust: 25px;
@@ -37,26 +58,32 @@ h2 {
 }
 
 #recipeList button {
-    background-color: rgb(12, 145, 0);
-    font-weight: bolder;
-    font-size: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(103, 145, 84);
+    
 }
 
 #firstAPI {
     padding-left: 20px;
 }
 
-#label {
-    font-size: 40px;
-}
 
 .foodInformation h2 {
-    color: blueviolet;
+    font-size: 30px;
     font-weight: bold;
+    color: rgb(103, 145, 84);
 }
+
+
 
 #searchButton {
     margin-left: 25%;
     background-color: rgb(103, 145, 84);
     color: rgb(0, 0, 0);
 }
+
+#nutrientsInfo {
+    margin-top: 5%;
+}
+
