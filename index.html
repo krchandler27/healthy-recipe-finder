@@ -1,19 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe and Nutrition</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Project1</title>
 </head>
+
 <body>
-    <header> 
-        <h1> Recipe and Nutrition</h1>
+    <header>
+        <h1>What shall I Eat?</h1>
+
+        <div class="columns">
+            <form class="column is-one-quarter">
+                <input id="foodItem" type="search" class="input is-rounded" />
+                <button id="searchButton" type="button" onclick="foodSearch()" class="button">Get in my belly</button>
+            </form>
+        </div>
     </header>
+
+    <main class="foodNutrition">
+        <!-- <h1>Food Facts</h1> -->
+        <div class="columns is-mobile is-multiline">
+
+            <div id="foodName" class="column is-full"></div>
+            <img id="foodPicture" class="column is-half"/>
+            <div id="nutrientsInfo" class="column is-half"></div>
+
+            <!-- <li id="CHOCDF" class="nutItem"></li>
+            <li id="ENERC_KCAL" class="nutItem"></li>
+            <li id="FAT" class="nutItem"></li>
+            <li id="FIBTG" class="nutItem"></li>
+            <li id="PROCNT" class="nutItem"></li>  -->
+        </div>
+    </main>
+
     <section>
-        <div id="response-text"> </div>
+        <div id="foodStuff"></div>
     </section>
-    <script src="assets/js/script.js"></script>
+
+    <section id="firstAPI" class="columns is-multiline is-mobile">
+        <div id="response-text"> </div>
+
+        <img id="recipePicture" class="column is-one-third" />
+        <div id="label" class="column is-two-thirds"></div>
+        <br>
+        <div id="calories" class="column is-full"></div>
+        <br>
+        <div id="ingredientLines" class="column is-half"></div>
+        <br>
+        <div id="directions" class="column is-half"></div>
+        <br>
+        <div id="digest" class="column is-one-third"></div>
+        <br>
+        <div id="dietLabels" class="column is-one-third"></div>
+        <br>
+        <div id="healthLabels" class="column is-one-third"></div>
+        <br>
+        <div id="recipeList"></div>
+    </section>
+
+
+
+
+
+
+    <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
