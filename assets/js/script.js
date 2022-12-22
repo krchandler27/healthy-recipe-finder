@@ -39,11 +39,15 @@ function foodInfo(info) {
   document.getElementById("foodName").innerHTML = "";
   document.getElementById("nutrientsInfo").innerHTML = "";
 
-  var foodItemName = document.createElement("h2");
-  foodItemName.innerHTML = info.text.charAt(0).toUpperCase() +
-    info.text.slice(1);
-  document.getElementById("foodName").style.color = "blue";
-  document.getElementById("foodName").style.fontSize = "35px";
+    document.getElementById("foodName").innerHTML = "";
+    document.getElementById("nutrientsInfo").innerHTML = "";
+   
+    
+
+    var foodItemName = document.createElement("h2");
+    foodItemName.innerHTML = info.hints[0].food.label.charAt(0).toUpperCase()+info.hints[0].food.label.slice(1);
+    document.getElementById("foodName");
+    document.getElementById("foodName");
 
   var foodImg = document.getElementById("foodPicture");
   foodImg.src = info.hints[0].food.image;
@@ -119,8 +123,8 @@ function firstAPIInfo(info) {
   recipeImg.src = info.hits[0].recipe.image;
 
   document.getElementById("label").innerHTML = info.hits[0].recipe.label;
-  document.getElementById("label").style.color = "green";
-  document.getElementById("label").style.fontWeight = "bolder";
+  document.getElementById("label");
+  document.getElementById("label");
 
   document.getElementById("calories").innerHTML =
     "Calories: " + (info.hits[0].recipe.calories).toFixed(2);
@@ -213,7 +217,8 @@ function firstAPIInfo(info) {
 
   for (let i = 0; i < 5; i++) {
     var recipes = info.hits[i].recipe.label;
-    var recipeButtonList = document.createElement("li");
+    
+    var recipeButtonList = document.createElement("ul");
     var recipeButton = document.createElement("BUTTON");
     recipeButton.setAttribute("data-recipe", recipes);
     var recipeButtonBox = document.createTextNode(recipes);
@@ -232,5 +237,4 @@ function firstAPIInfo(info) {
     console.log(info.hits[i].recipe.label);
   }
 }
-
 
