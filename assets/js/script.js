@@ -1,7 +1,12 @@
 var foodItem = document.getElementById("foodItem");
 var searchButton = document.getElementById("searchButton");
 
-
+foodItem.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("searchButton").click();
+  }
+});
 
 function foodSearch() {
   var food = foodItem.value;
@@ -19,13 +24,12 @@ foodItem.addEventListener("keypress", function (event) {
 
 // // Fetching the info from 1st API
 function findFoodFacts(food) {
-
   const options = {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'X-RapidAPI-Key': '2baebc70a1mshd27e67c12d60db1p17859ejsn0d50f086b942',
-      'X-RapidAPI-Host': 'edamam-food-and-grocery-database.p.rapidapi.com'
-    }
+      "X-RapidAPI-Key": "2baebc70a1mshd27e67c12d60db1p17859ejsn0d50f086b942",
+      "X-RapidAPI-Host": "edamam-food-and-grocery-database.p.rapidapi.com",
+    },
   };
 
   fetch('https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=' + food + '', options)
@@ -79,6 +83,7 @@ function foodInfo(info) {
 function findRecipe(food) {
   var APIKey1 = "4e66bd31b33a6e725fd7414ce112e3bd";
   var APIid = "bdaa3a33";
+
   var queryURL1 =
     "https://api.edamam.com/api/recipes/v2?type=public&q=" +
     food +
@@ -223,7 +228,7 @@ function firstAPIInfo(info) {
 
   for (let i = 0; i < 5; i++) {
     var recipes = info.hits[i].recipe.label;
-    
+
     var recipeButtonList = document.createElement("li");
     var recipeButton = document.createElement("BUTTON");
     recipeButton.setAttribute("data-recipe", recipes);
@@ -234,7 +239,8 @@ function firstAPIInfo(info) {
 
     recipeButton.onclick = function () {
 
-    var recipeButtonClick = event.target.getAttribute("data-recipe");
+    recipeButton.onclick = function () {
+      var recipeButtonClick = event.target.getAttribute("data-recipe");
 
       console.log(event.target.getAttribute("data-recipe"));
       console.log(recipeButtonClick);
@@ -244,4 +250,5 @@ function firstAPIInfo(info) {
 
     console.log(info.hits[i].recipe.label);
   }
+}
 }
