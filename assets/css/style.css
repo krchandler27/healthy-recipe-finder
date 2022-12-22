@@ -1,24 +1,33 @@
 
 
 body {
-    background-color: bisque;
+    background-color: rgb(206, 206, 206);
     padding: 15px 0 0 15px;
 }
 
 header h1 {
-    color: rgb(112, 173, 5);
-    font-size: 50px;
+    color: rgb(103, 145, 84);
+    font-size: 40px;
     font-weight: bolder;
+    
 }
 
 #foodName {
     text-align: center;
+    font-size:medium;
+    color: black !important;
+    
 }
 
 #foodPicture {
-    padding: 25px 25px 200px 200px;  
+   height: auto;
+   width: 100%;  
 }
 
+h2 {
+    font-size: 30px;
+    font-weight: bold !important;
+}
 .foodNutrition {
     text-size-adjust: 25px;
 }
@@ -44,4 +53,10 @@ header h1 {
 .foodInformation h2 {
     color: blueviolet;
     font-weight: bold;
+}
+
+#searchButton {
+    margin-left: 25%;
+    background-color: rgb(103, 145, 84);
+    color: rgb(0, 0, 0);
 }
