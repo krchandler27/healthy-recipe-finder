@@ -15,10 +15,10 @@
 <body>
     <header>
         <h1>What shall I Eat?</h1>
-
-        <div class="columns">
+        
+        <div class="columns is-mobile">
             <form class="column is-one-quarter">
-                <input id="foodItem" type="search" class="input is-rounded" />
+                <input id="foodItem" type="search" class="input is-rounded" style=" margin: 10%"/>
                 <button id="searchButton" type="button" onclick="foodSearch()" class="button">Get in my belly</button>
             </form>
         </div>
@@ -26,18 +26,26 @@
 
     <main class="foodNutrition">
         <!-- <h1>Food Facts</h1> -->
-        <div class="columns is-mobile is-multiline">
-
-            <div id="foodName" class="column is-full"></div>
-            <img id="foodPicture" class="column is-half"/>
-            <div id="nutrientsInfo" class="column is-half"></div>
+        
+        <div class="columns is-mobile">
+          <div class="column">
+            <p id="foodName"></p>
+            <div class="columns is-mobile">
+              <div class="column">
+                <img id="foodPicture" />
+              </div>
+              <div class="column">
+                <p id="nutrientsInfo"></p>
+              </div>
+            </div>
+          </div>
 
             <!-- <li id="CHOCDF" class="nutItem"></li>
             <li id="ENERC_KCAL" class="nutItem"></li>
             <li id="FAT" class="nutItem"></li>
             <li id="FIBTG" class="nutItem"></li>
             <li id="PROCNT" class="nutItem"></li>  -->
-        </div>
+        
     </main>
 
     <section>
