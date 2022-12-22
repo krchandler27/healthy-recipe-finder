@@ -13,11 +13,16 @@ function removeOldInfo() {
 function foodSearch() {
   var food = foodItem.value;
   console.log(food);
-
   findFoodFacts(food);
   findRecipe(food);
 }
 
+foodItem.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById("searchButton").click();
+  }
+});
 
 
 // // Fetching the information from API
@@ -45,6 +50,11 @@ fetch('https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=' + f
 // Place the fetched information into the web page
 function foodInfo (info) {
     // nutrientsList(info);
+
+    document.getElementById("foodName").innerHTML = "";
+    document.getElementById("nutrientsInfo").innerHTML = "";
+   
+    
 
     var foodItemName = document.createElement("h2");
     foodItemName.innerHTML = info.text.charAt(0).toUpperCase() +
@@ -126,6 +136,13 @@ function findRecipe(food) {
 
 // Putting the fetched information onto the page making it visible to the user.
 function firstAPIInfo(info) {
+  document.getElementById("directions").innerHTML = "";
+  document.getElementById("ingredientLines").innerHTML = "";
+  document.getElementById("digest").innerHTML = "";
+  document.getElementById("recipeList").innerHTML = "";
+  document.getElementById("healthLabels").innerHTML = "";
+  document.getElementById("dietLabels").innerHTML = "";
+
   var recipeImg = document.getElementById("recipePicture");
   recipeImg.src = info.hits[0].recipe.image;
 
