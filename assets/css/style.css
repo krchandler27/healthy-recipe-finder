@@ -16,7 +16,8 @@ header h1 {
 }
 
 #foodPicture {
-    padding: 25px 25px 200px 200px;  
+    width: 35%;
+    height: auto;  
 }
 
 .foodNutrition {
@@ -44,4 +45,8 @@ header h1 {
 .foodInformation h2 {
     color: blueviolet;
     font-weight: bold;
+}
+
+ul {
+    list-style-type:circle
 }
