@@ -14,9 +14,9 @@
 
 <body>
     <header>
-        <h1>Food Nutrition</h1>
+        <h1>What shall I Eat?</h1>
 
-        <div>
+        <div class="columns">
             <form class="column is-one-quarter">
                 <input id="foodItem" type="search" class="input is-rounded" />
                 <button id="searchButton" type="button" onclick="foodSearch()" class="button">Get in my belly</button>
@@ -26,18 +26,18 @@
 
     <main class="foodNutrition">
         <!-- <h1>Food Facts</h1> -->
-        <ul>
+        <div class="columns is-mobile is-multiline">
 
-            <img id="foodPicture" />
-            <div id="foodName"></div>
-            <div id="nutrientsInfo"></div>
+            <div id="foodName" class="column is-full"></div>
+            <img id="foodPicture" class="column is-half"/>
+            <div id="nutrientsInfo" class="column is-half"></div>
 
             <!-- <li id="CHOCDF" class="nutItem"></li>
             <li id="ENERC_KCAL" class="nutItem"></li>
             <li id="FAT" class="nutItem"></li>
             <li id="FIBTG" class="nutItem"></li>
             <li id="PROCNT" class="nutItem"></li>  -->
-        </ul>
+        </div>
     </main>
 
     <section>
@@ -47,8 +47,8 @@
     <section id="firstAPI" class="columns is-multiline is-mobile">
         <div id="response-text"> </div>
 
-        <img id="recipePicture" class="column is-half" />
-        <div id="label" class="column is-half"></div>
+        <img id="recipePicture" class="column is-one-third" />
+        <div id="label" class="column is-two-thirds"></div>
         <br>
         <div id="calories" class="column is-full"></div>
         <br>

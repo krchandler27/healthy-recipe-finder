@@ -1,14 +1,24 @@
 var foodItem = document.getElementById("foodItem");
+var searchButton = document.getElementById("searchButton");
+
+
+// Remove previous food information
+searchButton.addEventListener("click", removeOldInfo);
+function removeOldInfo() {
+
+    
+
+}
 
 function foodSearch() {
   var food = foodItem.value;
   console.log(food);
 
-  
-
   findFoodFacts(food);
   findRecipe(food);
 }
+
+
 
 // // Fetching the information from API
 function findFoodFacts(food) {

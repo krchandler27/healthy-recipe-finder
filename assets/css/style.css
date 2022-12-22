@@ -11,16 +11,17 @@ header h1 {
     font-weight: bolder;
 }
 
-main h1 {
-    font-size: 25px;
-    font-weight: bold;
-    color: brown;
+#foodName {
+    text-align: center;
+}
+
+#foodPicture {
+    padding: 25px 25px 200px 200px;  
 }
 
 .foodNutrition {
-    margin: 35px 0 60px 0;
+    text-size-adjust: 25px;
 }
-
 
 .nutItem {
     background-color: rgb(137, 210, 252);
@@ -38,10 +39,6 @@ main h1 {
 
 #label {
     font-size: 40px;
-    /* background-color: burlywood;
-    border-radius: 50px;
-    border-style: solid;
-    padding: 10px; */
 }
 
 .foodInformation h2 {
