@@ -1,6 +1,8 @@
 var foodItem = document.getElementById("foodItem");
 var searchButton = document.getElementById("searchButton");
 
+
+
 function foodSearch() {
   var food = foodItem.value;
   console.log(food);
@@ -38,11 +40,6 @@ function findFoodFacts(food) {
 function foodInfo(info) {
   document.getElementById("foodName").innerHTML = "";
   document.getElementById("nutrientsInfo").innerHTML = "";
-
-    document.getElementById("foodName").innerHTML = "";
-    document.getElementById("nutrientsInfo").innerHTML = "";
-   
-    
 
     var foodItemName = document.createElement("h2");
     foodItemName.innerHTML = info.hints[0].food.label.charAt(0).toUpperCase()+info.hints[0].food.label.slice(1);
@@ -127,9 +124,10 @@ function firstAPIInfo(info) {
   document.getElementById("label");
 
   document.getElementById("calories").innerHTML =
-    "Calories: " + (info.hits[0].recipe.calories).toFixed(2);
+    "Calories: " + info.hits[0].recipe.calories.toFixed(2);
 
   // Displaying the ingredients list
+  document.getElementById("ingredientLines").innerHTML = "";
   var ingredientTitle = document.createElement("h2");
   ingredientTitle.innerHTML = "Ingredients:";
   document.getElementById("ingredientLines").appendChild(ingredientTitle);
@@ -140,12 +138,13 @@ function firstAPIInfo(info) {
 
     var ingredients = info.hits[0].recipe.ingredientLines[i];
     var ingredientInfo = document.createElement("li");
-    var ingredientInfoBox = document.createTextNode(ingredients)
+    var ingredientInfoBox = document.createTextNode(ingredients);
     ingredientInfo.appendChild(ingredientInfoBox);
     document.getElementById("ingredientLines").appendChild(ingredientInfo);
   }
 
   // Displaying link to the cooking directions
+  document.getElementById("directions").innerHTML = "";
   var directionTitle = document.createElement("h2");
   directionTitle.innerHTML = "Directions";
   document.getElementById("directions").appendChild(directionTitle);
@@ -160,18 +159,19 @@ function firstAPIInfo(info) {
   document.getElementById("directions").appendChild(directionsInfo);
 
   // Displaying the nutrition facts
+  document.getElementById("digest").innerHTML = "";
   var nutritionFactsTitle = document.createElement("h2");
   nutritionFactsTitle.innerHTML = "Nutritional Information:";
   document.getElementById("digest").appendChild(nutritionFactsTitle);
   document.getElementById("digest").classList.add("foodInformation");
 
   for (var i = 0; i < info.hits[0].recipe.digest.length; i++) {
-    console.log((info.hits[0].recipe.digest).length);
+    console.log(info.hits[0].recipe.digest.length);
 
     var digestion =
       info.hits[0].recipe.digest[i].label +
       ": " +
-      (info.hits[0].recipe.digest[i].total).toFixed(2);
+      info.hits[0].recipe.digest[i].total.toFixed(2);
 
     var digestInfo = document.createElement("li");
     var digestInfoBox = document.createTextNode(digestion);
@@ -180,6 +180,7 @@ function firstAPIInfo(info) {
   }
 
   //   Displaying the diet labels
+  document.getElementById("dietLabels").innerHTML = "";
   var dietTypeTitle = document.createElement("h2");
   dietTypeTitle.innerHTML = "Diet Type(s):";
   document.getElementById("dietLabels").appendChild(dietTypeTitle);
@@ -193,8 +194,10 @@ function firstAPIInfo(info) {
     dietInfo.appendChild(dietInfoBox);
     document.getElementById("dietLabels").appendChild(dietInfo);
   }
+  
 
   //  Displaying the health labels
+  document.getElementById("healthLabels").innerHTML = "";
   var healthLabelsTitle = document.createElement("h2");
   healthLabelsTitle.innerHTML = "Health Labels:";
   document.getElementById("healthLabels").appendChild(healthLabelsTitle);
@@ -210,6 +213,7 @@ function firstAPIInfo(info) {
   }
 
   //  Displaying additional recipes.
+  document.getElementById("recipeList").innerHTML = "";
   var recipeListTitle = document.createElement("h2");
   recipeListTitle.innerHTML = "Additional Recipes:";
   document.getElementById("recipeList").appendChild(recipeListTitle);
@@ -227,7 +231,9 @@ function firstAPIInfo(info) {
     document.getElementById("recipeList").appendChild(recipeButtonList);
 
     recipeButton.onclick = function () {
-      var recipeButtonClick = event.target.getAttribute("data-recipe");
+
+    var recipeButtonClick = event.target.getAttribute("data-recipe");
+
       console.log(event.target.getAttribute("data-recipe"));
       console.log(recipeButtonClick);
       findFoodFacts(recipeButtonClick);
