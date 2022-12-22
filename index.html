@@ -6,14 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe and Nutrition</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header> 
         <h1> Recipe and Nutrition</h1>
     </header>
-    <section>
-        <div id="response-text"> </div>
-    </section>
+    <div class="container-fluid">
+        <div class="row">
+          <aside class="col-lg-3 bg-light">
+            <h5 class="mt-1">Search Recipe Nutrition Info">
+              <input class="form-control" type="text" id="search-value" />
+              <button type="button" id="search-button" class="btn btn-primary btn-sm">Search</button>
+            </div>
+            <ul class="list-group history">
+                <li></li>
+            </ul>
+          </aside>
+          <div class="col-lg-9">
+            <div id="recipe" class="mt-3"></div>
+            <div id="nutrition-data" class="card-deck mt-3"></div>
+          </div>
+        </div>
+      </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

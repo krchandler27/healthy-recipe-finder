@@ -23,25 +23,34 @@ function getAPI(queryURL1) {
 
 getAPI(queryURL1);
 
-var APIkey2="450378b744e7b7f6a628e60f5546bab8";
-var APIid2 = "3842e9bc";
-var health = "3 eggs";
-var queryURL2 = "https://api.edamam.com/api/nutrition-data?" + "app_id=" + APIid2 + "&app_key=" + APIkey2 + "&nutrition-type=cooking&ingr=" + health;
-var responseText=document.getElementById('response-text'); 
-//https://api.edamam.com/api/nutrition-data?app_id=3842e9bc&app_key=450378b744e7b7f6a628e60f5546bab8&nutrition-type=cooking&ingr=3%20eggs
-function getAPI(queryURL2)  {   
-        fetch(queryURL2)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                var myDiv = document.createElement('div');
-                myDiv.setAttribute("id", "myId");
-                myDiv.classList.add("myClass");
-                myDiv.textContent = data.recipeName;
-                document.querySelector("#response-text").appendChild(myDiv);
-                console.log(data);
-            })
-    
+ var APIkey2="450378b744e7b7f6a628e60f5546bab8";
+ var APIid2 = "3842e9bc";
+
+//testing from here down
+
+$("#search-button").on("click", function () {
+    var ingredients = $("#search-value").val();
+    $("#search-value").val("");
+    nutritionFacts(ingredients);
+  });
+
+  //search button enter key 
+  $("#search-button").keypress(function (event) {
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if (keycode === 13) {
+      nutritionFacts(ingredients);
     }
-getAPI(queryURL2);
+  });
+
+
+  function nutritionFacts(ingredients) {
+    $.ajax({
+      type: "GET",
+      url: "https://api.edamam.com/api/nutrition-data?" + "app_id=" + APIid2 + "&app_key=" + APIkey2 + "&nutrition-type=cooking&ingr=" + ingredients
+
+    }).then(function (data) {
+      console.log(data);
+      $("#nurtition-data").html("<h4 class=\"mt-3\">Facts:</h4>").append("<div class=\"row\">");
+
+        })
+    }
