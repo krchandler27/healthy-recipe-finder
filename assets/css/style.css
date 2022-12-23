@@ -3,6 +3,7 @@
 
 html {
     background-color: rgb(206, 206, 206);
+    margin-left: 10%;
 }
 
 body {
@@ -22,7 +23,7 @@ ul {
     list-style-type: circle;
 }
 
-#foodName {
+#foodName h2{
     text-align: center;
     font-size: 30px;
     font-weight: bold;
@@ -48,11 +49,12 @@ ul {
     font-size: medium;
     font-weight: bold;
 }
-h2 {
-    font-size: 30px;
+/* h2 {
+    font-size: 50% !important;
     font-weight: bold;
     color: rgb(103, 145, 84);
-}
+    word-wrap: break-word;
+} */
 .foodNutrition {
     text-size-adjust: 25px;
 }
@@ -65,7 +67,9 @@ h2 {
     font-size: 30px;
     font-weight: bold;
     color: rgb(103, 145, 84);
-    border-radius: 30%;
+    border-radius: 12px;
+    border-color: rgb(103, 145, 84);
+    border: 2px solid
     
     
 }
@@ -76,9 +80,10 @@ h2 {
 
 
 .foodInformation h2 {
-    font-size: 30px;
+    font-size: 125%;
     font-weight: bold;
     color: rgb(103, 145, 84);
+    word-wrap: break-word;
 }
 
 
@@ -94,7 +99,6 @@ h2 {
 
 #directions {
     word-wrap: break-word;
-<<<<<<< HEAD
 }
 
 a:link {
@@ -108,6 +112,12 @@ a:visited {
 a:hover {
     color: rgb(44, 54, 47);
 }
-=======
+
+#savedRecipeBox button{
+    margin-left: 25%;
+    background-color: rgb(103, 145, 84);
+    color: rgb(0, 0, 0);
+    border-radius: 12px;
+    border: 2px solid;
+    border-color: rgb(103, 145, 84);
 }
->>>>>>> 429ded4898a199f3a77b10ac9af2a16a76e4bb36
