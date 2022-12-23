@@ -8,6 +8,11 @@ foodItem.addEventListener("keypress", function (event) {
   }
 });
 
+function displayInfo() {
+  document.getElementById('foodItem').placeholder = 'Type food here';
+}
+displayInfo();
+
 function foodSearch() {
   var food = foodItem.value;
   console.log(food);
