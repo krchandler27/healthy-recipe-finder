@@ -18,6 +18,10 @@ header h1 {
     margin-left: 2%;
 }
 
+ul {
+    list-style-type: circle;
+}
+
 #foodName {
     text-align: center;
     font-size: 30px;
@@ -76,7 +80,6 @@ h2 {
 }
 
 
-
 #searchButton {
     margin-left: 25%;
     background-color: rgb(103, 145, 84);
@@ -87,3 +90,6 @@ h2 {
     margin-top: 5%;
 }
 
+#directions {
+    word-wrap: break-word;
+}
