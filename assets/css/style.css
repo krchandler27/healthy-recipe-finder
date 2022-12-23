@@ -62,6 +62,7 @@ h2 {
     font-weight: bold;
     color: rgb(103, 145, 84);
     
+    
 }
 
 #firstAPI {
@@ -87,3 +88,18 @@ h2 {
     margin-top: 5%;
 }
 
+#directions {
+    word-wrap: break-word;
+}
+
+a:link {
+    color: rgb(103, 145, 84);
+}
+
+a:visited {
+    color:  rgb(75, 105, 62);
+}
+
+a:hover {
+    color: rgb(44, 54, 47);
+}
