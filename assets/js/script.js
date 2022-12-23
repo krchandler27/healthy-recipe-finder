@@ -99,6 +99,7 @@ function foodInfo(info) {
 function findRecipe(food) {
   var APIKey1 = "4e66bd31b33a6e725fd7414ce112e3bd";
   var APIid = "bdaa3a33";
+
   var queryURL1 =
     "https://api.edamam.com/api/recipes/v2?type=public&q=" +
     food +
