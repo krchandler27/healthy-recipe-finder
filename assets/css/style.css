@@ -18,6 +18,10 @@ header h1 {
     margin-left: 2%;
 }
 
+ul {
+    list-style-type: circle;
+}
+
 #foodName {
     text-align: center;
     font-size: 30px;
@@ -78,7 +82,6 @@ h2 {
 }
 
 
-
 #searchButton {
     margin-left: 25%;
     background-color: rgb(103, 145, 84);
@@ -91,6 +94,7 @@ h2 {
 
 #directions {
     word-wrap: break-word;
+<<<<<<< HEAD
 }
 
 a:link {
@@ -104,3 +108,6 @@ a:visited {
 a:hover {
     color: rgb(44, 54, 47);
 }
+=======
+}
+>>>>>>> 429ded4898a199f3a77b10ac9af2a16a76e4bb36
