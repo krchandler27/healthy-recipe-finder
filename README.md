@@ -1,10 +1,11 @@
+
 # Healthy Recipe Finder
 Fetching information from two APIs to find a healthy recipe to make.
 
 ## Description
 An interactive front-end application that fetches data from two different APIs and displays information for the user to view. This information is dependent upon what type of recipe the user is looking for. The user searches for a food item and the application finds nutritional information for the food item as well as a list of recipes that use said food item. The first API displays nutritional information for the food item that is being searched for or the main ingredient for a recipe. The second API displays the recipe ingredients, a link to cooking directions, nutritonal information for the recipe as a whole as well as similar recipes in button form. Once a recipe button is clicked on, that recipe name will then be run through the two APIs, its information will be displayed for the user and the recipe name will be saved into the local storage. The saved recipe name will then be displayed on the page for the user to click on and view its information once more. The application is styled using a CSS framework called Bulma.
 
-The deployed URL - 
+The deployed URL - https://krchandler27.github.io/healthy-recipe-finder/
 
 
 ## Installation
@@ -14,7 +15,7 @@ N/A
 ## Usage
 To find recipes that incorporate a searched food item. To find the ingredients and the directions on how to make the recipe. Then to find nutritional information for the recipe as well as the main food item for the dish.
 
-Image:
+Image: ![project1 screenshot](https://user-images.githubusercontent.com/116473087/209265696-74e108cd-90e6-4332-9102-b15d6237a8b4.PNG)
 
 
 ## Credits
