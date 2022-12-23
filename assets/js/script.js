@@ -32,8 +32,15 @@ function findFoodFacts(food) {
     },
   };
 
-  fetch('https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=' + food + '', options)
-    .then(function (response) { return response.json() })
+  fetch(
+    "https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=" +
+      food +
+      "",
+    options
+  )
+    .then(function (response) {
+      return response.json();
+    })
     .then(function (data) {
       console.log(data);
       foodInfo(data);
@@ -56,27 +63,38 @@ function foodInfo(info) {
   foodImg.src = info.hints[0].food.image;
 
   var carbList = document.createElement("li");
-  carbList.innerHTML = "Carbohydrate, by difference: " + info.hints[0].food.nutrients.CHOCDF + "g";
+  carbList.innerHTML =
+    "Carbohydrate, by difference: " +
+    info.hints[0].food.nutrients.CHOCDF.toFixed(2) +
+    "g";
 
   var energyList = document.createElement("li");
-  energyList.innerHTML = "Energy: " + info.hints[0].food.nutrients.ENERC_KCAL + "kcal";
+  energyList.innerHTML =
+    "Energy: " + info.hints[0].food.nutrients.ENERC_KCAL.toFixed(2) + "kcal";
 
   var fatList = document.createElement("li");
-  fatList.innerHTML = "Total lipid (fat) content: " + (info.hints[0].food.nutrients.FAT) + "g";
+  fatList.innerHTML =
+    "Total lipid (fat) content: " +
+    info.hints[0].food.nutrients.FAT.toFixed(2) +
+    "g";
 
   var fiberList = document.createElement("li");
-  fiberList.innerHTML = "Fiber, total dietary: " + info.hints[0].food.nutrients.FIBTG + "g";
+  fiberList.innerHTML =
+    "Fiber, total dietary: " +
+    info.hints[0].food.nutrients.FIBTG.toFixed(2) +
+    "g";
 
   var proteinList = document.createElement("li");
-  proteinList.innerHTML = "Protein: " + info.hints[0].food.nutrients.PROCNT + "g";
+  proteinList.innerHTML =
+    "Protein: " + info.hints[0].food.nutrients.PROCNT.toFixed(2) + "g";
 
   document.getElementById("foodName").appendChild(foodItemName);
-  document.getElementById("nutrientsInfo").appendChild(carbList);
-  document.getElementById("nutrientsInfo").appendChild(energyList);
-  document.getElementById("nutrientsInfo").appendChild(fatList);
-  document.getElementById("nutrientsInfo").appendChild(fiberList);
-  document.getElementById("nutrientsInfo").appendChild(proteinList);
-
+  var nutrientsInformation = document.getElementById("nutrientsInfo");
+  nutrientsInformation.appendChild(carbList);
+  nutrientsInformation.appendChild(energyList);
+  nutrientsInformation.appendChild(fatList);
+  nutrientsInformation.appendChild(fiberList);
+  nutrientsInformation.appendChild(proteinList);
 }
 
 // Fetching info from the 2nd API
@@ -201,7 +219,6 @@ function firstAPIInfo(info) {
     dietInfo.appendChild(dietInfoBox);
     document.getElementById("dietLabels").appendChild(dietInfo);
   }
-  
 
   //  Displaying the health labels
   document.getElementById("healthLabels").innerHTML = "";
@@ -238,8 +255,6 @@ function firstAPIInfo(info) {
     document.getElementById("recipeList").appendChild(recipeButtonList);
 
     recipeButton.onclick = function () {
-
-    recipeButton.onclick = function () {
       var recipeButtonClick = event.target.getAttribute("data-recipe");
 
       console.log(event.target.getAttribute("data-recipe"));
@@ -250,5 +265,4 @@ function firstAPIInfo(info) {
 
     console.log(info.hits[i].recipe.label);
   }
-}
 }
