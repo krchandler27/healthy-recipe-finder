@@ -94,7 +94,7 @@ function foodInfo(info) {
   nutrientsInformation.appendChild(energyList);
   nutrientsInformation.appendChild(fatList);
   nutrientsInformation.appendChild(fiberList);
-  nutrientsInformation.appendChild(proteinList);
+  nutrientsInformation.appendChild(proteinList);codeon
 }
 
 // Fetching info from the 2nd API
