@@ -92,7 +92,7 @@ function foodInfo(info) {
   nutrientsInformation.appendChild(energyList);
   nutrientsInformation.appendChild(fatList);
   nutrientsInformation.appendChild(fiberList);
-  nutrientsInformation.appendChild(proteinList);codeon
+  nutrientsInformation.appendChild(proteinList);
 }
 
 // Fetching info from the 2nd API
@@ -143,8 +143,6 @@ function firstAPIInfo(info) {
   recipeImg.src = info.hits[0].recipe.image;
 
   document.getElementById("label").innerHTML = info.hits[0].recipe.label;
-  document.getElementById("label");
-  document.getElementById("label");
 
   document.getElementById("calories").innerHTML =
     "Calories: " + info.hits[0].recipe.calories.toFixed(2);
@@ -259,8 +257,31 @@ function firstAPIInfo(info) {
       console.log(recipeButtonClick);
       findFoodFacts(recipeButtonClick);
       findRecipe(recipeButtonClick);
+
+      localStorage.setItem("recipe", recipeButtonClick);
+      getSavedRecipe();
     };
 
     console.log(info.hits[i].recipe.label);
 }
 }
+
+// Uses local storage to retrieve recipes that were searched for.
+function getSavedRecipe() {
+    var savedRecipe = localStorage.getItem("recipe");
+    console.log(savedRecipe);
+  
+    var recipeButton = document.createElement("BUTTON");
+    var recipeButtonBtn = document.createTextNode(savedRecipe);
+    recipeButton.appendChild(recipeButtonBtn);
+    document.getElementById("savedRecipeBox").appendChild(recipeButton);
+  
+    recipeButton.onclick = function (recipe) {
+      recipe = savedRecipe;
+  
+      findFoodFacts(recipe);
+      findRecipe(recipe);
+  
+      console.log(savedRecipe);
+    };
+  }
