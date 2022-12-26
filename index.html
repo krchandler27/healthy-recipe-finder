@@ -26,20 +26,20 @@
           </div>
           <div class="control">
             <a id="searchButton" type="button" class="button is-info is-rounded" onclick="foodSearch()">
-              Get in my belly
+              Get in my belly!
             </a>
           </div>
         </div>
   </div>
 
 
-      <div id="savedRecipeBox"></div>
+      <div id="savedRecipeBox" class="col-sm my-5 text-center hide prevSearch">Previously Searched Recipes</div>
   </header>
 
     <main class="foodNutrition">
         
         
-      <div class="container notification">
+      <div class="container notification mainFood hide">
         <div class="column">
           <p id="foodName"></p>
           <div class="columns is-mobile">
@@ -59,7 +59,7 @@
     </section>
     
     
-    <section id="firstAPI" class="section">
+    <section id="firstAPI" class="section firstSectionAPI hide">
       <div id="response-text" class="tile is-ancestor"> 
         <div class="tile is-vertical ">
           <div class="tile">
