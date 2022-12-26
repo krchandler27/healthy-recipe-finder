@@ -197,7 +197,7 @@ function firstAPIInfo(info) {
     var digestion =
       info.hits[0].recipe.digest[i].label +
       ": " +
-      info.hits[0].recipe.digest[i].total.toFixed(2);
+      info.hits[0].recipe.digest[i].total.toFixed(2) + info.hits[0].recipe.digest[i].unit;
 
     var digestInfo = document.createElement("li");
     var digestInfoBox = document.createTextNode(digestion);

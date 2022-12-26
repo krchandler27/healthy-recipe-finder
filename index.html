@@ -12,15 +12,29 @@
 </head>
 
 <body>
+
   <header>
     <h1>Resplendent Recipe Finder</h1>
+
         
-        <div class="columns is-mobile">
-            <form class="column is-one-quarter">
+        <!-- <div class="columns is-mobile is-centered">
+            <form class="control is-grouped is-centered">
                 <input id="foodItem" type="search" class="input is-rounded" style=" margin: 10%"/>
                 <button id="searchButton" type="button" onclick="foodSearch()" class="button">Get in my belly</button>
             </form>
-        </div>
+        </div> -->
+    <div class="columns is-centered is-mobile">
+        <div class="field has-addons">
+            <div class="control">
+              <input id="foodItem" class="input is-rounded" type="search" placeholder="Feed Me">
+            </div>
+            <div class="control">
+              <a id="searchButton" type="button" class="button is-info is-rounded" onclick="foodSearch()">
+                Get in my belly
+              </a>
+            </div>
+          </div>
+    </div>
 
         <div id="savedRecipeBox"></div>
     </header>
