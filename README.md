@@ -1,5 +1,5 @@
 
-# Respendent Recipe Finder
+# Resplendent Recipe Finder
 Fetching information from two APIs to find a healthy recipe to make.
 
 ## Description
