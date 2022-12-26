@@ -4,6 +4,7 @@
 html {
     background-color: rgb(206, 206, 206);
     margin-left: 10%;
+    margin-right: 10%;
 }
 
 body {
@@ -17,6 +18,9 @@ header h1 {
     font-size: 40px;
     font-weight: bolder;
     margin-left: 2%;
+    text-align: center;
+    margin-bottom: 2%;
+    margin-top: 1%;
 }
 
 ul {
@@ -64,6 +68,7 @@ ul {
 }
 
 #recipeList button {
+    cursor:pointer;
     font-size: 30px;
     font-weight: bold;
     color: rgb(103, 145, 84);
@@ -71,8 +76,9 @@ ul {
     border-color: rgb(103, 145, 84);
     border: 2px solid
     
-    
 }
+
+
 
 #firstAPI {
     padding-left: 20px;
@@ -121,3 +127,4 @@ a:hover {
     border: 2px solid;
     border-color: rgb(103, 145, 84);
 }
+
