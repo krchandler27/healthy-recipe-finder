@@ -13,7 +13,7 @@ body {
 }
 
 header h1 {
-    color: rgb(103, 145, 84);
+    color: rgb(0, 0, 0);
     font-size: 40px;
     font-weight: bolder;
     margin-left: 2%;
@@ -26,6 +26,15 @@ header h1 {
 .mainFood {
     background-color: rgb(103, 145, 84);
     border-radius: 50px;
+}
+
+.subtitle {
+    color:black;
+}
+.box {
+    background-color: rgb(103, 145, 84);
+    border-radius: 50px;
+    
 }
 
 ul {
@@ -52,7 +61,7 @@ ul {
     text-align: center;
     font-size: 30px;
     font-weight: bold;
-    color: rgb(103, 145, 84);
+    color: rgb(0, 0, 0);
 }
 
 #calories {
@@ -93,7 +102,7 @@ ul {
 .foodInformation h2 {
     font-size: 125%;
     font-weight: bold;
-    color: rgb(103, 145, 84);
+    color: rgb(0, 0, 0);
     word-wrap: break-word;
 }
 
@@ -123,22 +132,25 @@ ul {
 }
 
 a:link {
-    color: rgb(103, 145, 84);
+    color: rgb(117, 0, 0);
 }
 
 a:visited {
-    color: rgb(75, 105, 62);
+    color: rgb(0, 0, 0);
 }
 
 a:hover {
-    color: rgb(44, 54, 47);
+    color: rgb(80, 80, 80);
 }
 
 #savedRecipeBox button {
     margin-left: 25%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     background-color: rgb(103, 145, 84);
     color: rgb(0, 0, 0);
     border-radius: 12px;
     border: 2px solid;
     border-color: rgb(103, 145, 84);
+    cursor: pointer;
 }
