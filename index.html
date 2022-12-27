@@ -2,42 +2,38 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="shortcut icon" href="./assets/images/chef hat.png">
-  <title>Resplendent Recipe Finder</title>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="shortcut icon" href="./assets/images/chef hat.png">
+<title>Resplendent Recipe Finder</title>
+
 </head>
 
 <body>
 
-  <header>
-    <h1>Resplendent Recipe Finder</h1>
-
-        
-        <!-- <div class="columns is-mobile is-centered">
-            <form class="control is-grouped is-centered">
-                <input id="foodItem" type="search" class="input is-rounded" style=" margin: 10%"/>
-                <button id="searchButton" type="button" onclick="foodSearch()" class="button">Get in my belly</button>
-            </form>
-        </div> -->
-    <div class="columns is-centered is-mobile">
-        <div class="field has-addons">
-            <div class="control">
-              <input id="foodItem" class="input is-rounded" type="search" placeholder="Feed Me">
-            </div>
-            <div class="control">
-              <a id="searchButton" type="button" class="button is-info is-rounded" onclick="foodSearch()">
-                Get in my belly
-              </a>
-            </div>
-          </div>
-    </div>
-
 <header>
 
+    
+  <div class="columns is-centered is-mobile">
+      <div class="field has-addons" style="margin: 1%;">
+          <div class="control">
+            <input id="foodItem" class="input is-rounded" type="search" placeholder="Feed Me">
+          </div>
+          <div class="control">
+            <a id="searchButton" type="button" class="button is-info is-rounded" onclick="foodSearch()">
+              Get in my belly
+            </a>
+          </div>
+        </div>
+  </div>
+
+
+      <div id="savedRecipeBox"></div>
+  </header>
 
     <main class="foodNutrition">
         
