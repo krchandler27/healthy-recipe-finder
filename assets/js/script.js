@@ -9,7 +9,7 @@ foodItem.addEventListener("keypress", function (event) {
 });
 
 function displayInfo() {
-  document.getElementById('foodItem').placeholder = 'Type food here';
+  document.getElementById('foodItem').placeholder = 'Type food here.';
 }
 displayInfo();
 
@@ -19,13 +19,6 @@ function foodSearch() {
   findFoodFacts(food);
   findRecipe(food);
 }
-
-foodItem.addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    document.getElementById("searchButton").click();
-  }
-});
 
 // // Fetching the info from 1st API
 function findFoodFacts(food) {
@@ -39,8 +32,8 @@ function findFoodFacts(food) {
 
   fetch(
     "https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=" +
-      food +
-      "",
+    food +
+    "",
     options
   )
     .then(function (response) {
@@ -54,13 +47,17 @@ function findFoodFacts(food) {
 
 // Place the fetched information into the web page
 function foodInfo(info) {
+  document.querySelector(".notification").classList.remove("hide");
+  document.querySelector(".firstSectionAPI").classList.remove("hide");
+  document.querySelector(".prevSearch").classList.remove("hide");
+
   document.getElementById("foodName").innerHTML = "";
   document.getElementById("nutrientsInfo").innerHTML = "";
 
-    var foodItemName = document.createElement("h2");
-    foodItemName.innerHTML = info.hints[0].food.label.charAt(0).toUpperCase()+info.hints[0].food.label.slice(1);
-    document.getElementById("foodName");
-    document.getElementById("foodName");
+  var foodItemName = document.createElement("h2");
+  foodItemName.innerHTML = info.hints[0].food.label.charAt(0).toUpperCase() + info.hints[0].food.label.slice(1);
+  document.getElementById("foodName");
+  document.getElementById("foodName");
 
   var foodImg = document.getElementById("foodPicture");
   foodImg.src = info.hints[0].food.image;
@@ -240,13 +237,13 @@ function firstAPIInfo(info) {
   //  Displaying additional recipes.
   document.getElementById("recipeList").innerHTML = "";
   var recipeListTitle = document.createElement("h2");
-  recipeListTitle.innerHTML = "Additional Recipes:";
+  recipeListTitle.innerHTML = "Click Below for Additional Recipes:";
   document.getElementById("recipeList").appendChild(recipeListTitle);
   document.getElementById("recipeList").classList.add("foodInformation");
 
   for (let i = 0; i < 5; i++) {
     var recipes = info.hits[i].recipe.label;
-    
+
     var recipeButtonList = document.createElement("ul");
     var recipeButton = document.createElement("BUTTON");
     recipeButton.setAttribute("data-recipe", recipes);
@@ -268,25 +265,25 @@ function firstAPIInfo(info) {
     };
 
     console.log(info.hits[i].recipe.label);
-}
+  }
 }
 
 // Uses local storage to retrieve recipes that were searched for.
 function getSavedRecipe() {
-    var savedRecipe = localStorage.getItem("recipe");
+  var savedRecipe = localStorage.getItem("recipe");
+  console.log(savedRecipe);
+
+  var recipeButton = document.createElement("BUTTON");
+  var recipeButtonBtn = document.createTextNode(savedRecipe);
+  recipeButton.appendChild(recipeButtonBtn);
+  document.getElementById("savedRecipeBox").appendChild(recipeButton);
+
+  recipeButton.onclick = function (recipe) {
+    recipe = savedRecipe;
+
+    findFoodFacts(recipe);
+    findRecipe(recipe);
+
     console.log(savedRecipe);
-  
-    var recipeButton = document.createElement("BUTTON");
-    var recipeButtonBtn = document.createTextNode(savedRecipe);
-    recipeButton.appendChild(recipeButtonBtn);
-    document.getElementById("savedRecipeBox").appendChild(recipeButton);
-  
-    recipeButton.onclick = function (recipe) {
-      recipe = savedRecipe;
-  
-      findFoodFacts(recipe);
-      findRecipe(recipe);
-  
-      console.log(savedRecipe);
-    };
-  }
+  };
+}

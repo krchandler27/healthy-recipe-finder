@@ -1,14 +1,13 @@
-
-
-
 html {
-    background-color: rgb(206, 206, 206);
+    background-color: white;
     margin-left: 10%;
     margin-right: 10%;
+    margin-top: 2%;
+    margin-bottom: 10%;
 }
 
 body {
-    background-color: rgb(206, 206, 206);
+    background-color: white;
     height: 100%;
     width: 100%;
 }
@@ -19,29 +18,34 @@ header h1 {
     font-weight: bolder;
     margin-left: 2%;
     text-align: center;
-
+    background-color: white;
     margin-bottom: 2%;
     margin-top: 1%;
-
 }
- 
+
+.mainFood {
+    background-color: rgb(103, 145, 84);
+    border-radius: 50px;
+}
 
 ul {
     list-style-type: circle;
 }
 
-#foodName h2{
-    text-align: center;
+#foodName h2 {
+    text-align: right;
+    margin-right: 20%;
     font-size: 30px;
     font-weight: bold;
-    color: rgb(103, 145, 84);
-    
+    color: black;
+
 }
 
 #foodPicture {
-   height: auto;
-   width: 100%; 
-   padding: 3%; 
+    height: auto;
+    width: 100%;
+    border: 10px solid white;
+    border-radius: 50px;
 }
 
 #label {
@@ -56,12 +60,7 @@ ul {
     font-size: medium;
     font-weight: bold;
 }
-/* h2 {
-    font-size: 50% !important;
-    font-weight: bold;
-    color: rgb(103, 145, 84);
-    word-wrap: break-word;
-} */
+
 .foodNutrition {
     text-size-adjust: 25px;
 }
@@ -71,22 +70,25 @@ ul {
 }
 
 #recipeList button {
-    cursor:pointer;
-    font-size: 30px;
+    display: block;
+    cursor: pointer;
+    font-size: 20px;
     font-weight: bold;
     color: rgb(103, 145, 84);
     border-radius: 12px;
-    border-color: rgb(103, 145, 84);
-    border: 2px solid
-    
+    border: 2px solid white;
+    margin-top: 10px;
+    width: 100%;
 }
-
-
 
 #firstAPI {
     padding-left: 20px;
+    background-color: white;
 }
 
+.hide {
+    display: none;
+}
 
 .foodInformation h2 {
     font-size: 125%;
@@ -95,15 +97,25 @@ ul {
     word-wrap: break-word;
 }
 
+#savedRecipeBox button {
+    list-style-type: circle;
+    display: block;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    /* opacity: 0; */
+}
 
 #searchButton {
-    margin-left: 25%;
     background-color: rgb(103, 145, 84);
     color: rgb(0, 0, 0);
 }
 
 #nutrientsInfo {
     margin-top: 5%;
+    padding-left: 20%;
+    color: black;
 }
 
 #directions {
@@ -115,14 +127,14 @@ a:link {
 }
 
 a:visited {
-    color:  rgb(75, 105, 62);
+    color: rgb(75, 105, 62);
 }
 
 a:hover {
     color: rgb(44, 54, 47);
 }
 
-#savedRecipeBox button{
+#savedRecipeBox button {
     margin-left: 25%;
     background-color: rgb(103, 145, 84);
     color: rgb(0, 0, 0);
@@ -130,4 +142,3 @@ a:hover {
     border: 2px solid;
     border-color: rgb(103, 145, 84);
 }
-
