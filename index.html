@@ -13,55 +13,51 @@
 <body>
     <header class="">
         <h1>What Shall I Eat?</h1>
-        
-        <!-- <div class="columns is-mobile is-centered">
-            <form class="control is-grouped is-centered">
-                <input id="foodItem" type="search" class="input is-rounded" style=" margin: 10%"/>
-                <button id="searchButton" type="button" onclick="foodSearch()" class="button">Get in my belly</button>
-            </form>
-        </div> -->
-    <div class="columns is-centered is-mobile">
-        <div class="field has-addons">
-            <div class="control">
-              <input id="foodItem" class="input is-rounded" type="search" placeholder="Feed Me">
+
+        <button class="test">Hello World</button>
+
+        <div class="columns is-centered is-mobile">
+            <div class="field has-addons">
+                <div class="control">
+                    <input id="foodItem" class="input is-rounded" type="search" placeholder="Feed Me">
+                </div>
+                <div class="control">
+                    <a id="searchButton" type="button" class="button is-info is-rounded" onclick="foodSearch()">
+                        Get in my belly 😋
+                    </a>
+                </div>
             </div>
-            <div class="control">
-              <a id="searchButton" type="button" class="button is-info is-rounded" onclick="foodSearch()">
-                Get in my belly
-              </a>
-            </div>
-          </div>
-    </div>
+        </div>
 
         <div id="savedRecipeBox"></div>
     </header>
 
     <main class="foodNutrition">
-        
-        
+
+
         <div class="columns is-mobile">
-          <div class="column">
-            <p id="foodName"></p>
-            <div class="columns is-mobile">
-              <div class="column">
-                <img id="foodPicture" />
-              </div>
-              <div class="column">
-                <p id="nutrientsInfo"></p>
-              </div>
+            <div class="column">
+                <p id="foodName"></p>
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <img id="foodPicture" />
+                    </div>
+                    <div class="column">
+                        <p id="nutrientsInfo"></p>
+                    </div>
+                </div>
             </div>
-          </div>
-        
+
     </main>
 
     <section>
         <div id="foodStuff"></div>
     </section>
-    
-    
- <section id="firstAPI" class="columns is-multiline is-mobile">
+
+
+    <section id="firstAPI" class="columns is-multiline is-mobile">
         <div id="response-text"> </div>
-        
+
 
         <div class="column is-one-quarter"></div>
         <div id="label" class="column is-mobile is-centered is-half is-multiline"></div>
@@ -75,21 +71,21 @@
         <div id="calories" class="column is-half is is-centered"></div>
         <div class="column is-one-quarter"></div>
         <br>
-        <ul id="ingredientLines" class="column is-one-third"></ul>
+        <div id="ingredientLines" class="column is-one-third"></div>
         <br>
-        <ul id="directions" class="column is-one-third"></ul>
+        <div id="directions" class="column is-one-third"></div>
         <br>
-        <ul id="digest" class="column is-one-third"></ul>
+        <div id="dietLabels" class="column is-one-third"></div>
         <br>
-        <ul id="dietLabels" class="column is-one-third"></ul>
+        <div id="digest" class="column is-two-third"></div>
         <br>
         <div class="column is-one-third"></div>
-        <ul id="healthLabels" class="column is-one-third"></ul>
+        <div id="healthLabels" class="column is-one-third"></div>
         <br>
         <div class="column is-one-third"></div>
         <div id="recipeList" class="column"></div>
         <div class="column is-one-third"></div>
-    </section> 
+    </section>
 
 
     <script src="./assets/js/script.js"></script>

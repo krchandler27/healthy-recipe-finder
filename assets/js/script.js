@@ -1,6 +1,7 @@
 var foodItem = document.getElementById("foodItem");
 var searchButton = document.getElementById("searchButton");
 
+// Using the enter key to search
 foodItem.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -8,19 +9,13 @@ foodItem.addEventListener("keypress", function (event) {
   }
 });
 
+// Runs the search input food name through the APIs
 function foodSearch() {
   var food = foodItem.value;
   console.log(food);
   findFoodFacts(food);
   findRecipe(food);
 }
-
-foodItem.addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    document.getElementById("searchButton").click();
-  }
-});
 
 // // Fetching the info from 1st API
 function findFoodFacts(food) {
@@ -47,15 +42,15 @@ function findFoodFacts(food) {
     });
 }
 
-// Place the fetched information into the web page
+// Placing the fetched information into the web page from the 1st API, makeing it visible to the user.
 function foodInfo(info) {
   document.getElementById("foodName").innerHTML = "";
   document.getElementById("nutrientsInfo").innerHTML = "";
 
-    var foodItemName = document.createElement("h2");
-    foodItemName.innerHTML = info.hints[0].food.label.charAt(0).toUpperCase()+info.hints[0].food.label.slice(1);
-    document.getElementById("foodName");
-    document.getElementById("foodName");
+  var foodItemName = document.createElement("h2");
+  foodItemName.innerHTML =
+    info.hints[0].food.label.charAt(0).toUpperCase() +
+    info.hints[0].food.label.slice(1);
 
   var foodImg = document.getElementById("foodPicture");
   foodImg.src = info.hints[0].food.image;
@@ -72,7 +67,7 @@ function foodInfo(info) {
 
   var fatList = document.createElement("li");
   fatList.innerHTML =
-    "Total lipid (fat) content: " +
+    "Fat (total lipid) content: " +
     info.hints[0].food.nutrients.FAT.toFixed(2) +
     "g";
 
@@ -99,7 +94,6 @@ function foodInfo(info) {
 function findRecipe(food) {
   var APIKey1 = "4e66bd31b33a6e725fd7414ce112e3bd";
   var APIid = "bdaa3a33";
-
   var queryURL1 =
     "https://api.edamam.com/api/recipes/v2?type=public&q=" +
     food +
@@ -130,7 +124,8 @@ function findRecipe(food) {
   }
 }
 
-// Putting the fetched information onto the page making it visible to the user.
+// Putting the fetched information from the 2nd API onto the page making it visible to the user.
+// This first part clears the old information, making room for only the new information to be visible.
 function firstAPIInfo(info) {
   document.getElementById("directions").innerHTML = "";
   document.getElementById("ingredientLines").innerHTML = "";
@@ -148,11 +143,11 @@ function firstAPIInfo(info) {
     "Calories: " + info.hits[0].recipe.calories.toFixed(2);
 
   // Displaying the ingredients list
-  document.getElementById("ingredientLines").innerHTML = "";
   var ingredientTitle = document.createElement("h2");
   ingredientTitle.innerHTML = "Ingredients:";
   document.getElementById("ingredientLines").appendChild(ingredientTitle);
   document.getElementById("ingredientLines").classList.add("foodInformation");
+  var ingredientsList = document.createElement("ul");
 
   for (var i = 0; i < info.hits[0].recipe.ingredientLines.length; i++) {
     console.log(info.hits[0].recipe.ingredientLines.length);
@@ -160,12 +155,12 @@ function firstAPIInfo(info) {
     var ingredients = info.hits[0].recipe.ingredientLines[i];
     var ingredientInfo = document.createElement("li");
     var ingredientInfoBox = document.createTextNode(ingredients);
+    ingredientsList.appendChild(ingredientInfo);
     ingredientInfo.appendChild(ingredientInfoBox);
-    document.getElementById("ingredientLines").appendChild(ingredientInfo);
+    document.getElementById("ingredientLines").appendChild(ingredientsList);
   }
 
   // Displaying link to the cooking directions
-  document.getElementById("directions").innerHTML = "";
   var directionTitle = document.createElement("h2");
   directionTitle.innerHTML = "Directions";
   document.getElementById("directions").appendChild(directionTitle);
@@ -180,11 +175,11 @@ function firstAPIInfo(info) {
   document.getElementById("directions").appendChild(directionsInfo);
 
   // Displaying the nutrition facts
-  document.getElementById("digest").innerHTML = "";
   var nutritionFactsTitle = document.createElement("h2");
   nutritionFactsTitle.innerHTML = "Nutritional Information:";
   document.getElementById("digest").appendChild(nutritionFactsTitle);
   document.getElementById("digest").classList.add("foodInformation");
+  var digestInfoList = document.createElement("ul");
 
   for (var i = 0; i < info.hits[0].recipe.digest.length; i++) {
     console.log(info.hits[0].recipe.digest.length);
@@ -192,12 +187,14 @@ function firstAPIInfo(info) {
     var digestion =
       info.hits[0].recipe.digest[i].label +
       ": " +
-      info.hits[0].recipe.digest[i].total.toFixed(2) + info.hits[0].recipe.digest[i].unit;
+      info.hits[0].recipe.digest[i].total.toFixed(2) +
+      info.hits[0].recipe.digest[i].unit;
 
     var digestInfo = document.createElement("li");
     var digestInfoBox = document.createTextNode(digestion);
+    digestInfoList.appendChild(digestInfo);
     digestInfo.appendChild(digestInfoBox);
-    document.getElementById("digest").appendChild(digestInfo);
+    document.getElementById("digest").appendChild(digestInfoList);
   }
 
   //   Displaying the diet labels
@@ -206,14 +203,16 @@ function firstAPIInfo(info) {
   dietTypeTitle.innerHTML = "Diet Type(s):";
   document.getElementById("dietLabels").appendChild(dietTypeTitle);
   document.getElementById("dietLabels").classList.add("foodInformation");
+  var dietInfoList = document.createElement("ul");
 
   for (var i = 0; i < info.hits[0].recipe.dietLabels.length; i++) {
     console.log(info.hits[0].recipe.dietLabels.length);
     var dietTypes = info.hits[0].recipe.dietLabels[i];
     var dietInfo = document.createElement("li");
     var dietInfoBox = document.createTextNode(dietTypes);
+    dietInfoList.appendChild(dietInfo);
     dietInfo.appendChild(dietInfoBox);
-    document.getElementById("dietLabels").appendChild(dietInfo);
+    document.getElementById("dietLabels").appendChild(dietInfoList);
   }
 
   //  Displaying the health labels
@@ -222,14 +221,16 @@ function firstAPIInfo(info) {
   healthLabelsTitle.innerHTML = "Health Labels:";
   document.getElementById("healthLabels").appendChild(healthLabelsTitle);
   document.getElementById("healthLabels").classList.add("foodInformation");
+  var healthInfoList = document.createElement("ul");
 
   for (var i = 0; i < info.hits[0].recipe.healthLabels.length; i++) {
     console.log(info.hits[0].recipe.healthLabels.length);
     var health = info.hits[0].recipe.healthLabels[i];
     var healthInfo = document.createElement("li");
     var healthInfoBox = document.createTextNode(health);
+    healthInfoList.appendChild(healthInfo);
     healthInfo.appendChild(healthInfoBox);
-    document.getElementById("healthLabels").appendChild(healthInfo);
+    document.getElementById("healthLabels").appendChild(healthInfoList);
   }
 
   //  Displaying additional recipes.
@@ -238,15 +239,17 @@ function firstAPIInfo(info) {
   recipeListTitle.innerHTML = "Additional Recipes:";
   document.getElementById("recipeList").appendChild(recipeListTitle);
   document.getElementById("recipeList").classList.add("foodInformation");
+  var recipeButtonList = document.createElement("ul");
 
   for (let i = 0; i < 5; i++) {
     var recipes = info.hits[i].recipe.label;
-    
-    var recipeButtonList = document.createElement("ul");
+
+    var recipeButtonItems = document.createElement("li");
     var recipeButton = document.createElement("BUTTON");
     recipeButton.setAttribute("data-recipe", recipes);
     var recipeButtonBox = document.createTextNode(recipes);
-    recipeButtonList.appendChild(recipeButton);
+    recipeButtonList.appendChild(recipeButtonItems);
+    recipeButtonItems.appendChild(recipeButton);
     recipeButton.appendChild(recipeButtonBox);
     document.getElementById("recipeList").appendChild(recipeButtonList);
 
@@ -263,25 +266,59 @@ function firstAPIInfo(info) {
     };
 
     console.log(info.hits[i].recipe.label);
-}
+  }
+
+  // Alphabetize the li elements inside of an ul element. Courtesy of w3Schools.com
+  function sortList(list) {
+    var list;
+    var i;
+    var switching;
+    var b;
+    var shouldSwitch;
+    list = document.getElementById(list);
+    switching = true;
+    while (switching) {
+      switching = false;
+      b = list.getElementsByTagName("li");
+      for (i = 0; i < b.length - 1; i++) {
+        shouldSwitch = false;
+        if (
+          b[i].innerHTML.toLocaleLowerCase() >
+          b[i + 1].innerHTML.toLocaleLowerCase()
+        ) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+      if (shouldSwitch) {
+        b[i].parentNode.insertBefore(b[i + 1], b[i]);
+        switching = true;
+      }
+    }
+  }
+  sortList("digest");
+  sortList("dietLabels");
+  sortList("healthLabels");
+  sortList("recipeList");
 }
 
-// Uses local storage to retrieve recipes that were searched for.
+// Uses local storage to retrieve recipes that were searched for and save them onto the page for easy researching.
 function getSavedRecipe() {
-    var savedRecipe = localStorage.getItem("recipe");
+  var savedRecipe = localStorage.getItem("recipe");
+  console.log(savedRecipe);
+
+  var recipeButton = document.createElement("BUTTON");
+  var recipeButtonBtn = document.createTextNode(savedRecipe);
+  recipeButton.appendChild(recipeButtonBtn);
+  document.getElementById("savedRecipeBox").appendChild(recipeButton);
+
+  recipeButton.onclick = function (recipe) {
+    recipe = savedRecipe;
+
+    findFoodFacts(recipe);
+    findRecipe(recipe);
+
     console.log(savedRecipe);
-  
-    var recipeButton = document.createElement("BUTTON");
-    var recipeButtonBtn = document.createTextNode(savedRecipe);
-    recipeButton.appendChild(recipeButtonBtn);
-    document.getElementById("savedRecipeBox").appendChild(recipeButton);
-  
-    recipeButton.onclick = function (recipe) {
-      recipe = savedRecipe;
-  
-      findFoodFacts(recipe);
-      findRecipe(recipe);
-  
-      console.log(savedRecipe);
-    };
-  }
+  };
+  sortList("recipeList");
+}

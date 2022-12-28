@@ -1,6 +1,4 @@
 
-
-
 html {
     background-color: rgb(206, 206, 206);
 }
@@ -18,7 +16,6 @@ header h1 {
     margin-left: 2%;
     text-align: center;
 }
- 
 
 ul {
     list-style-type: circle;
@@ -29,7 +26,6 @@ ul {
     font-size: 30px;
     font-weight: bold;
     color: rgb(103, 145, 84);
-    
 }
 
 #foodPicture {
@@ -50,11 +46,14 @@ ul {
     font-size: medium;
     font-weight: bold;
 }
+
 h2 {
     font-size: 30px;
     font-weight: bold;
     color: rgb(103, 145, 84);
+    text-align: center;
 }
+
 .foodNutrition {
     text-size-adjust: 25px;
 }
@@ -67,20 +66,17 @@ h2 {
     font-size: 30px;
     font-weight: bold;
     color: rgb(103, 145, 84);
-    
 }
 
 #firstAPI {
     padding-left: 20px;
 }
 
-
 .foodInformation h2 {
     font-size: 30px;
     font-weight: bold;
     color: rgb(103, 145, 84);
 }
-
 
 #searchButton {
     margin-left: 25%;
@@ -95,3 +91,71 @@ h2 {
 #directions {
     word-wrap: break-word;
 }
+#dietLabels {
+    text-align: center;
+ }
+
+#dietLabels ul {
+    display: inline-block;
+    text-align: left;
+}
+
+#digest ul {
+    columns: 2;
+    column-gap: 100px;
+    column-rule: 5px double rgb(103, 145, 84);
+}
+
+#healthLabels ul {
+    columns: 2;
+    column-gap: 100px;
+    column-rule: 5px double rgb(103, 145, 84);
+}
+
+
+
+/* Below is just playing with button css */
+/* .test {
+    height: 200px;
+    width: 200px;
+    background-color: rgb(103, 145, 84);
+    box-shadow: 0px 10px 8px black;
+    border-radius: 12px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    outline-offset: 4px;
+}
+
+@keyframes turnIt {
+    0% {width: 200px;
+    height: 200px;}
+    50% {width: 300px;
+    height: 300px;}
+    100% {width: 200px;
+        height: 200px;}
+}
+
+.test:hover {
+    animation-name: turnIt;
+    animation-duration: 10s;
+    transform: translateX(6px)
+    translateY(-6px)
+    rotateZ(360deg);
+    transition-duration: 10s;
+}
+
+.test:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+.button {
+    box-shadow: 0px 2px 8px rgb(103, 145, 84), 0px 3px 8px rgb(206, 206, 206), 0px 5px 8px rgb(103, 145, 84);
+}
+
+.button:hover {
+    transform: rotateZ(360deg);
+    transition-duration: 10s;
+} */
