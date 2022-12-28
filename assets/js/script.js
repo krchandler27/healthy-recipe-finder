@@ -9,7 +9,11 @@ foodItem.addEventListener("keypress", function (event) {
   }
 });
 
-// Runs the search input food name through the APIs
+function displayInfo() {
+  document.getElementById('foodItem').placeholder = 'Type food here.';
+}
+displayInfo();
+
 function foodSearch() {
   var food = foodItem.value;
   console.log(food);
@@ -29,8 +33,8 @@ function findFoodFacts(food) {
 
   fetch(
     "https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=" +
-      food +
-      "",
+    food +
+    "",
     options
   )
     .then(function (response) {
@@ -44,6 +48,10 @@ function findFoodFacts(food) {
 
 // Placing the fetched information into the web page from the 1st API, makeing it visible to the user.
 function foodInfo(info) {
+  document.querySelector(".notification").classList.remove("hide");
+  document.querySelector(".firstSectionAPI").classList.remove("hide");
+  document.querySelector(".prevSearch").classList.remove("hide");
+
   document.getElementById("foodName").innerHTML = "";
   document.getElementById("nutrientsInfo").innerHTML = "";
 
@@ -236,7 +244,7 @@ function firstAPIInfo(info) {
   //  Displaying additional recipes.
   document.getElementById("recipeList").innerHTML = "";
   var recipeListTitle = document.createElement("h2");
-  recipeListTitle.innerHTML = "Additional Recipes:";
+  recipeListTitle.innerHTML = "Click Below for Additional Recipes:";
   document.getElementById("recipeList").appendChild(recipeListTitle);
   document.getElementById("recipeList").classList.add("foodInformation");
   var recipeButtonList = document.createElement("ul");
@@ -266,7 +274,7 @@ function firstAPIInfo(info) {
     };
 
     console.log(info.hits[i].recipe.label);
-  }
+    }
 
   // Alphabetize the li elements inside of an ul element. Courtesy of w3Schools.com
   function sortList(list) {
