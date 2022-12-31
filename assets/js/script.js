@@ -50,6 +50,7 @@ function foodInfo(info) {
   document.querySelector(".notification").classList.remove("hide");
   document.querySelector(".firstSectionAPI").classList.remove("hide");
   document.querySelector(".prevSearch").classList.remove("hide");
+  document.querySelector(".footer").classList.remove("hide");
 
   document.getElementById("foodName").innerHTML = "";
   document.getElementById("nutrientsInfo").innerHTML = "";
