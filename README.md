@@ -1,9 +1,9 @@
 
 # Resplendent Recipe Finder
-Fetching information from two APIs to find a healthy recipe to make.
+Fetching information from two APIs to find a resplendent recipe to make.
 
 ## Description
-An interactive front-end application that fetches data from two different APIs and displays information for the user to view. This information is dependent upon what type of recipe the user is looking for. The user searches for a food item and the application finds nutritional information for the food item as well as a list of recipes that use said food item. The first API displays nutritional information for the food item that is being searched for or the main ingredient for a recipe. The second API displays the recipe ingredients, a link to cooking directions, nutritonal information for the recipe as a whole as well as similar recipes in button form. Once a recipe button is clicked on, that recipe name will then be run through the two APIs, its information will be displayed for the user and the recipe name will be saved into the local storage. The saved recipe name will then be displayed on the page for the user to click on and view its information once more. The application is styled using a CSS framework called Bulma.
+An interactive front-end application that fetches data from two different APIs and displays information for the user to view. This information is dependent upon what type of recipe the user is looking for. The user searches for a food item and the application finds nutritional information for the food item as well as a list of recipes that use said food item. The first API displays nutritional information for the food item that is being searched for or the main ingredient for a recipe. The second API displays the recipe ingredients, a link to cooking directions, nutritonal information for the recipe as a whole, as well as similar recipes in button form. Once a recipe button is clicked on, that recipe name will then be run through the two APIs, its information will be displayed for the user and the recipe name will be saved into local storage. The saved recipe name will then be displayed on the page for the user to click on and view its information once more. The application is styled using a CSS framework called Bulma.
 
 The deployed URL: https://krchandler27.github.io/resplendent-recipe-finder/
 
@@ -15,8 +15,8 @@ N/A
 ## Usage
 To find recipes that incorporate a searched food item. To find the ingredients and the directions on how to make the recipe. Then to find nutritional information for the recipe as well as the main food item for the dish.
 
-Image: ![project1 screenshot](https://user-images.githubusercontent.com/116473087/209265696-74e108cd-90e6-4332-9102-b15d6237a8b4.PNG)
-
+![image1](https://user-images.githubusercontent.com/116527506/210151611-28bbff4d-bed8-4321-9761-085569dbe2e7.JPG)
+![image2](https://user-images.githubusercontent.com/116527506/210151686-587e9ec2-3a9a-4036-8a4d-244bee9b5e4c.JPG)
 
 ## Credits
 
