@@ -1,13 +1,12 @@
 html {
-    background-color: white;
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 2%;
-    margin-bottom: 10%;
+    margin-bottom: 0%;
 }
 
+
 body {
-    background-color: white;
     height: 100%;
     width: 100%;
 }
@@ -24,21 +23,26 @@ header h1 {
 }
 
 .mainFood {
-    background-color: rgb(103, 145, 84);
+    background-color: rgb(129, 182, 104);
     border-radius: 50px;
+    border: 10px solid white;
 }
 
 .subtitle {
-    color:black;
+    color: black;
 }
+
 .box {
-    background-color: rgb(103, 145, 84);
+    background-color: rgb(129, 182, 104);
     border-radius: 50px;
-    
 }
 
 ul {
     list-style-type: circle;
+}
+
+li {
+    margin-top: 10px;
 }
 
 #foodName h2 {
@@ -47,7 +51,13 @@ ul {
     font-size: 30px;
     font-weight: bold;
     color: black;
+}
 
+#recipePicture {
+    height: auto;
+    width: 100%;
+    border: 5px solid white;
+    border-radius: 25px;
 }
 
 #foodPicture {
@@ -66,7 +76,7 @@ ul {
 
 #calories {
     text-align: center;
-    font-size: medium;
+    font-size: 25px;
     font-weight: bold;
 }
 
@@ -83,7 +93,7 @@ ul {
     cursor: pointer;
     font-size: 20px;
     font-weight: bold;
-    color: rgb(103, 145, 84);
+    color: rgb(129, 182, 104);
     border-radius: 12px;
     border: 2px solid white;
     margin-top: 10px;
@@ -106,18 +116,13 @@ ul {
     word-wrap: break-word;
 }
 
-#savedRecipeBox button {
-    list-style-type: circle;
-    display: block;
-    width: 50%;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-    /* opacity: 0; */
+.makeBorders {
+    border: 10px solid white;
+    border-radius: 50px;
 }
 
 #searchButton {
-    background-color: rgb(103, 145, 84);
+    background-color: rgb(129, 182, 104);
     color: rgb(0, 0, 0);
 }
 
@@ -125,6 +130,7 @@ ul {
     margin-top: 5%;
     padding-left: 20%;
     color: black;
+    font-size: 20px;
 }
 
 #directions {
@@ -144,13 +150,32 @@ a:hover {
 }
 
 #savedRecipeBox button {
+    display: block;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
     margin-left: 25%;
     margin-top: 2%;
     margin-bottom: 2%;
-    background-color: rgb(103, 145, 84);
+    background-color: rgb(129, 182, 104);
     color: rgb(0, 0, 0);
     border-radius: 12px;
-    border: 2px solid;
-    border-color: rgb(103, 145, 84);
+    border: 2px black solid;
     cursor: pointer;
 }
+
+#savedRecipeBox {
+    text-align: center;
+}
+
+.footer {
+    padding: 0%
+}
+
+footer {
+    position: relative;
+    text-align: center;
+    margin-bottom: 2%
+}
+
