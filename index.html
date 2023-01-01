@@ -31,18 +31,21 @@
       </div>
     </div>
 
+    <button id="clearRecipe">Clear Saved Recipes</button>
 
-    <div id="savedRecipeBox" class="col-sm my-5 text-center hide prevSearch">Previously Searched Recipes:</div>
+    <div class="col-sm my-5 text-center hide prevSearch">Previously Searched Recipes:
+      <div id="savedRecipeBox"></div>
+    </div>
   </header>
 
-  <main class="foodNutrition">
+  <main class="foodNutrition is-mobile is-half">
 
 
-    <div class="container notification mainFood hide">
+    <div class="container mainFood hide is-mobile">
       <div class="column">
         <p id="foodName"></p>
-        <div class="columns is-mobile">
-          <div class="column">
+        <div class="columns is-mobile ">
+          <div class="column foodCol is-mobile ">
             <img id="foodPicture" />
           </div>
           <div class="column">

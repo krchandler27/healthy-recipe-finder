@@ -47,7 +47,7 @@ function findFoodFacts(food) {
 
 // Place the fetched information into the web page
 function foodInfo(info) {
-  document.querySelector(".notification").classList.remove("hide");
+  document.querySelector(".mainFood").classList.remove("hide");
   document.querySelector(".firstSectionAPI").classList.remove("hide");
   document.querySelector(".prevSearch").classList.remove("hide");
   document.querySelector(".footer").classList.remove("hide");
@@ -288,3 +288,5 @@ function getSavedRecipe() {
     console.log(savedRecipe);
   };
 }
+// Starting here to play w JS
+
