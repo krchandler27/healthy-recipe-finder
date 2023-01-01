@@ -13,7 +13,7 @@
 
 </head>
 
-<body class="has-background-light">
+<body class="has-background-light" onload="getStorageRecipe()">
 
   <header>
     <h1 class="has-background-light">Resplendent Recipe Finder</h1>
@@ -21,31 +21,32 @@
     <div class="columns is-centered is-mobile">
       <div class="field has-addons" style="margin: 1%;">
         <div class="control">
-          <input id="foodItem" class="input is-rounded" type="search" placeholder="Feed Me">
+          <input id="foodItem" class="input is-rounded" type="search" placeholder="Food Item Here">
         </div>
         <div class="control">
-          <a id="searchButton" type="button" class="button is-info is-rounded" onclick="foodSearch()">
-            Get in my belly!
-          </a>
+          <button id="searchButton" type="button" class="button is-info is-rounded" onclick="foodSearch()">
+            Get in my belly! 😋
+          </button>
         </div>
       </div>
     </div>
 
     <button id="clearRecipe">Clear Saved Recipes</button>
 
-    <div class="col-sm my-5 text-center hide prevSearch">Previously Searched Recipes:
+    <div class="col-sm my-5 text-center prevSearch">
+      <h3 class="column is-one-quarter">Previously Searched Recipes</h3>
       <div id="savedRecipeBox"></div>
     </div>
   </header>
 
-  <main class="foodNutrition is-mobile is-half">
-
-
-    <div class="container mainFood hide is-mobile">
-      <div class="column">
+  <main class=" columns foodNutrition">
+        
+        
+    <div class="container makeBorders notification mainFood hide column is-two-thirds">
+      <div class="column is-full is-center">
         <p id="foodName"></p>
-        <div class="columns is-mobile ">
-          <div class="column foodCol is-mobile ">
+        <div class="columns is-mobile">
+          <div class="column">
             <img id="foodPicture" />
           </div>
           <div class="column">
@@ -53,7 +54,7 @@
           </div>
         </div>
       </div>
-
+      
   </main>
 
   <section>
@@ -65,7 +66,7 @@
     <div id="response-text" class="tile is-ancestor">
       <div class="tile is-vertical">
         <div class="tile">
-          <div class="tile is-parent is-4 is-vertical">
+          <div class="tile is-parent is-4 is-vertical infoOne">
             <article class="tile is-child box makeBorders">
               <p class="title" id="label"></p>
               <figure class="image">
@@ -96,11 +97,12 @@
     </div>
   </section>
 
-  <script src="./assets/js/script.js"></script>
   <footer class="hide footer has-background-light">
     <p>© 2022 Team Delishus-and-Nutrishus</p>
     <p>Contributors: Kevin Breedlove, Katherine Lantto, and Katie Speakman</p>
   </footer>
+
+  <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
