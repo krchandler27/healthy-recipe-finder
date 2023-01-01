@@ -15,9 +15,20 @@ displayInfo();
 
 function foodSearch() {
   var food = foodItem.value;
-  console.log(food);
+  if (document.getElementById("foodItem").value === "")
+    return;
+  else
+    console.log(food);
   findFoodFacts(food);
   findRecipe(food);
+}
+
+// Takes the old recipes from the local storage and displays them on page.
+function getStorageRecipe() {
+  if (localStorage.getItem("recipe") === null) {  
+  } else {
+    getSavedRecipe();
+  }
 }
 
 // // Fetching the info from 1st API
@@ -133,7 +144,10 @@ function findRecipe(food) {
   }
 }
 
-// Putting the fetched information onto the page making it visible to the user.
+var recipeButtonClickList = [];
+
+// Putting the fetched information from the 2nd API onto the page making it visible to the user.
+  // This first part clears the old information, making room for only the new information to be visible.
 function firstAPIInfo(info) {
   document.getElementById("directions").innerHTML = "";
   document.getElementById("ingredientLines").innerHTML = "";
@@ -156,6 +170,7 @@ function firstAPIInfo(info) {
   ingredientTitle.innerHTML = "Ingredients:";
   document.getElementById("ingredientLines").appendChild(ingredientTitle);
   document.getElementById("ingredientLines").classList.add("foodInformation");
+  var ingredientsList = document.createElement("ul");
 
   for (var i = 0; i < info.hits[0].recipe.ingredientLines.length; i++) {
     console.log(info.hits[0].recipe.ingredientLines.length);
@@ -163,12 +178,12 @@ function firstAPIInfo(info) {
     var ingredients = info.hits[0].recipe.ingredientLines[i];
     var ingredientInfo = document.createElement("li");
     var ingredientInfoBox = document.createTextNode(ingredients);
+    ingredientsList.appendChild(ingredientInfo);
     ingredientInfo.appendChild(ingredientInfoBox);
-    document.getElementById("ingredientLines").appendChild(ingredientInfo);
+    document.getElementById("ingredientLines").appendChild(ingredientsList);
   }
 
   // Displaying link to the cooking directions
-  document.getElementById("directions").innerHTML = "";
   var directionTitle = document.createElement("h2");
   directionTitle.innerHTML = "Directions";
   document.getElementById("directions").appendChild(directionTitle);
@@ -183,11 +198,11 @@ function firstAPIInfo(info) {
   document.getElementById("directions").appendChild(directionsInfo);
 
   // Displaying the nutrition facts
-  document.getElementById("digest").innerHTML = "";
   var nutritionFactsTitle = document.createElement("h2");
   nutritionFactsTitle.innerHTML = "Nutritional Information:";
   document.getElementById("digest").appendChild(nutritionFactsTitle);
   document.getElementById("digest").classList.add("foodInformation");
+  var digestInfoList = document.createElement("ul");
 
   for (var i = 0; i < info.hits[0].recipe.digest.length; i++) {
     console.log(info.hits[0].recipe.digest.length);
@@ -199,56 +214,60 @@ function firstAPIInfo(info) {
 
     var digestInfo = document.createElement("li");
     var digestInfoBox = document.createTextNode(digestion);
+    digestInfoList.appendChild(digestInfo);
     digestInfo.appendChild(digestInfoBox);
-    document.getElementById("digest").appendChild(digestInfo);
+    document.getElementById("digest").appendChild(digestInfoList);
   }
 
   //   Displaying the diet labels
-  document.getElementById("dietLabels").innerHTML = "";
   var dietTypeTitle = document.createElement("h2");
   dietTypeTitle.innerHTML = "Diet Type(s):";
   document.getElementById("dietLabels").appendChild(dietTypeTitle);
   document.getElementById("dietLabels").classList.add("foodInformation");
+  var dietInfoList = document.createElement("ul");
 
   for (var i = 0; i < info.hits[0].recipe.dietLabels.length; i++) {
     console.log(info.hits[0].recipe.dietLabels.length);
     var dietTypes = info.hits[0].recipe.dietLabels[i];
     var dietInfo = document.createElement("li");
     var dietInfoBox = document.createTextNode(dietTypes);
+    dietInfoList.appendChild(dietInfo);
     dietInfo.appendChild(dietInfoBox);
-    document.getElementById("dietLabels").appendChild(dietInfo);
+    document.getElementById("dietLabels").appendChild(dietInfoList);
   }
 
   //  Displaying the health labels
-  document.getElementById("healthLabels").innerHTML = "";
-  var healthLabelsTitle = document.createElement("h2");
+    var healthLabelsTitle = document.createElement("h2");
   healthLabelsTitle.innerHTML = "Health Labels:";
   document.getElementById("healthLabels").appendChild(healthLabelsTitle);
   document.getElementById("healthLabels").classList.add("foodInformation");
+  var healthInfoList = document.createElement("ul");
 
   for (var i = 0; i < info.hits[0].recipe.healthLabels.length; i++) {
     console.log(info.hits[0].recipe.healthLabels.length);
     var health = info.hits[0].recipe.healthLabels[i];
     var healthInfo = document.createElement("li");
     var healthInfoBox = document.createTextNode(health);
+    healthInfoList.appendChild(healthInfo);
     healthInfo.appendChild(healthInfoBox);
     document.getElementById("healthLabels").appendChild(healthInfo);
   }
 
   //  Displaying additional recipes.
-  document.getElementById("recipeList").innerHTML = "";
   var recipeListTitle = document.createElement("h2");
   recipeListTitle.innerHTML = "Click Below for Additional Recipes:";
   document.getElementById("recipeList").appendChild(recipeListTitle);
   document.getElementById("recipeList").classList.add("foodInformation");
+  var recipeButtonList = document.createElement("ul");
 
   for (let i = 0; i < 5; i++) {
     var recipes = info.hits[i].recipe.label;
 
-    var recipeButtonList = document.createElement("ul");
+    var recipeButtonItems = document.createElement("li");
     var recipeButton = document.createElement("BUTTON");
     recipeButton.setAttribute("data-recipe", recipes);
     var recipeButtonBox = document.createTextNode(recipes);
+    recipeButtonList.appendChild(recipeButtonItems);
     recipeButtonList.appendChild(recipeButton);
     recipeButton.appendChild(recipeButtonBox);
     document.getElementById("recipeList").appendChild(recipeButtonList);
@@ -261,32 +280,84 @@ function firstAPIInfo(info) {
       findFoodFacts(recipeButtonClick);
       findRecipe(recipeButtonClick);
 
-      localStorage.setItem("recipe", recipeButtonClick);
+      recipeButtonClickList.push(recipeButtonClick); 
+      localStorage.setItem("recipe", JSON.stringify(recipeButtonClickList));
       getSavedRecipe();
     };
 
-    console.log(info.hits[i].recipe.label);
+    console.log(recipeButtonClickList);
   }
+   // Alphabetize the li elements inside of an ul element. Courtesy of w3Schools.com
+   function sortList(list) {
+    var list;
+    var i;
+    var switching;
+    var b;
+    var shouldSwitch;
+    list = document.getElementById(list);
+    switching = true;
+    while (switching) {
+      switching = false;
+      b = list.getElementsByTagName("li");
+      for (i = 0; i < b.length - 1; i++) {
+        shouldSwitch = false;
+        if (
+          b[i].innerHTML.toLocaleLowerCase() >
+          b[i + 1].innerHTML.toLocaleLowerCase()
+        ) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+      if (shouldSwitch) {
+        b[i].parentNode.insertBefore(b[i + 1], b[i]);
+        switching = true;
+      }
+    }
+  }
+  sortList("digest");
+  sortList("dietLabels");
+  sortList("healthLabels");
+  sortList("recipeList");
+  sortList("savedRecipeBox");
 }
 
-// Uses local storage to retrieve recipes that were searched for.
+// Uses local storage to retrieve recipes that were searched for and save them onto the page for easy researching.
 function getSavedRecipe() {
-  var savedRecipe = localStorage.getItem("recipe");
+    document.getElementById("savedRecipeBox").innerHTML = "";
+  var oldSearch = "";
+  var savedRecipe = JSON.parse(localStorage.getItem("recipe"));
   console.log(savedRecipe);
 
+  for (var i = 0; i < savedRecipe.length; i++) {
+    oldSearch = savedRecipe[i];
+
   var recipeButton = document.createElement("BUTTON");
-  var recipeButtonBtn = document.createTextNode(savedRecipe);
+  var recipeButtonBtn = document.createTextNode(oldSearch);
   recipeButton.appendChild(recipeButtonBtn);
   document.getElementById("savedRecipeBox").appendChild(recipeButton);
 
-  recipeButton.onclick = function (recipe) {
-    recipe = savedRecipe;
+  recipeButton.onclick = function () {
+    // recipe = savedRecipe;
 
-    findFoodFacts(recipe);
-    findRecipe(recipe);
+    // findFoodFacts(recipe);
+    // findRecipe(recipe);
+
+    findFoodFacts(this.innerText);
+    findRecipe(this.innerText);
 
     console.log(savedRecipe);
   };
 }
-// Starting here to play w JS
+//   sortList("savedRecipeBox");
+}
 
+// Button to clear the recipes in the local storage and the saved recipe buttons on the page..
+var clearRecipeLS = document.getElementById("clearRecipe");
+clearRecipeLS.addEventListener("click", function() {
+  localStorage.clear();
+  var removeRecipeBtn = document.getElementById("savedRecipeBox");
+  while (removeRecipeBtn.hasChildNodes()) {
+    removeRecipeBtn.removeChild(removeRecipeBtn.firstChild);
+  }
+});
