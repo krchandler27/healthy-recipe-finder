@@ -274,11 +274,14 @@ function firstAPIInfo(info) {
 
     recipeButton.onclick = function () {
       var recipeButtonClick = event.target.getAttribute("data-recipe");
+      var elem = document.getElementById("textPrev")
 
       console.log(event.target.getAttribute("data-recipe"));
       console.log(recipeButtonClick);
       findFoodFacts(recipeButtonClick);
       findRecipe(recipeButtonClick);
+
+      elem.scrollIntoView();
 
       if (!recipeButtonClickList.includes(recipeButtonClick)) {
         recipeButtonClickList.push(recipeButtonClick);
