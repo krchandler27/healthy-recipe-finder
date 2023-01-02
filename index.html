@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-background-light">
 
 <head>
 
@@ -9,92 +9,98 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="shortcut icon" href="./assets/images/chef hat.png">
-<title>Resplendent Recipe Finder</title>
+  <title>Resplendent Recipe Finder</title>
 
 </head>
 
-<body>
+<body class="has-background-light" onload="getStorageRecipe()">
 
-<header>
-  <h1>Resplendent Recipe Finder</h1>
-    
-  <div class="columns is-centered is-mobile">
+  <header>
+    <h1 class="has-background-light">Resplendent Recipe Finder</h1>
+
+    <div class="columns is-centered is-mobile">
       <div class="field has-addons" style="margin: 1%;">
-          <div class="control">
-            <input id="foodItem" class="input is-rounded" type="search" placeholder="Feed Me">
-          </div>
-          <div class="control">
-            <a id="searchButton" type="button" class="button is-info is-rounded" onclick="foodSearch()">
-              Get in my belly!
-            </a>
-          </div>
+        <div class="control">
+          <input id="foodItem" class="input is-rounded" type="search" placeholder="Food Item Here">
         </div>
-  </div>
-
-
-      <div id="savedRecipeBox" class="col-sm my-5 text-center hide prevSearch">Previously Searched Recipes</div>
+        <div class="control">
+          <button id="searchButton" type="button" class="button is-info is-rounded" onclick="foodSearch()">
+            Get in my belly! 😋
+          </button>
+        </div>
+      </div>
+    </div>
   </header>
 
-    <main class="foodNutrition">
-        
-        
-      <div class="container notification mainFood hide">
-        <div class="column">
-          <p id="foodName"></p>
-          <div class="columns is-mobile">
-            <div class="column">
-              <img id="foodPicture" />
-            </div>
-            <div class="column">
-              <p id="nutrientsInfo"></p>
-            </div>
+  <main class=" columns foodNutrition">
+
+
+    <div class="container makeBorders notification mainFood hide column is-two-thirds">
+      <div class="column is-full is-center">
+        <p id="foodName"></p>
+        <div class="columns is-mobile">
+          <div class="column">
+            <img id="foodPicture" />
+          </div>
+          <div class="column">
+            <p id="nutrientsInfo"></p>
           </div>
         </div>
-        
-    </main>
+      </div>
 
-    <section>
-        <div id="foodStuff"></div>
-    </section>
-    
-    
-    <section id="firstAPI" class="section firstSectionAPI hide">
-      <div id="response-text" class="tile is-ancestor"> 
-        <div class="tile is-vertical ">
-          <div class="tile">
-            <div class="tile is-parent is-4 is-vertical">
-              <article class="tile is-child box">
-                <p class="title" id="label"></p>
-                  <figure class="image">
-                    <img id="recipePicture" />
-                  </figure>
-                <p class="subtitle" id="calories"></p>
-                <p class="subtitle" id="ingredientLines"></p>
-                <p class="subtitle" id="directions"></p>
-                <p class="subtitle" id="dietLabels"></p>
-              </article>
-              
-            </div>
-            <div class="tile is-parent is-4 is-vertical">
-              <article class="title is-child box">
-                <p class="subtitle" id="digest"></p>
-              </article>
-            </div>
-            <div class="tile is-parent is-4 is-vertical">
-              <article class="title is-child box">
-                <p class="subtitle" id="healthLabels"></p>
-              </article>
-              <article class="title is-child box">
-                <p class="subtitle" id="recipeList"></p>
-              </article>
-            </div>
+  </main>
+
+  <section>
+    <div id="foodStuff"></div>
+  </section>
+
+  <div class="col-sm my-5 text-center hide prevSearch">
+    <h3 id="textPrev">Previously Searched Recipes</h3>
+    <div id="savedRecipeBox"></div>
+    <button id="clearRecipe">Clear Saved Recipes</button>
+  </div>
+
+  <section id="firstAPI" class="section firstSectionAPI hide has-background-light">
+    <div id="response-text" class="tile is-ancestor">
+      <div class="tile is-vertical">
+        <div class="tile">
+          <div class="tile is-parent is-4 is-vertical infoOne">
+            <article class="tile is-child box makeBorders">
+              <p class="title" id="label"></p>
+              <figure class="image">
+                <img id="recipePicture" />
+              </figure>
+              <p class="subtitle" id="calories"></p>
+              <p class="subtitle" id="ingredientLines"></p>
+              <p class="subtitle" id="directions"></p>
+              <p class="subtitle" id="dietLabels"></p>
+            </article>
+
+          </div>
+          <div class="tile is-parent is-4 is-vertical">
+            <article class="title is-child box makeBorders">
+              <p class="subtitle" id="digest"></p>
+            </article>
+          </div>
+          <div class="tile is-parent is-4 is-vertical">
+            <article class="title is-child box makeBorders">
+              <p class="subtitle" id="healthLabels"></p>
+            </article>
+            <article class="title is-child box makeBorders">
+              <p class="subtitle" id="recipeList"></p>
+            </article>
           </div>
         </div>
-      </div>   
-    </section> 
+      </div>
+    </div>
+  </section>
 
+  <footer class="hide footer has-background-light">
+    <p>© 2022 Team Delishus-and-Nutrishus</p>
+    <p>Contributors: Kevin Breedlove, Katherine Lantto, and Katie Speakman</p>
+  </footer>
 
-    <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
 
 </html>

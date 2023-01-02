@@ -16,9 +16,20 @@ displayInfo();
 
 function foodSearch() {
   var food = foodItem.value;
-  console.log(food);
+  if (document.getElementById("foodItem").value === "")
+    return;
+  else
+    console.log(food);
   findFoodFacts(food);
   findRecipe(food);
+}
+
+// Takes the old recipes from the local storage and displays them on page.
+function getStorageRecipe() {
+  if (localStorage.getItem("recipe") === null) {  
+  } else {
+    getSavedRecipe();
+  }
 }
 
 // // Fetching the info from 1st API
@@ -48,9 +59,10 @@ function findFoodFacts(food) {
 
 // Placing the fetched information into the web page from the 1st API, makeing it visible to the user.
 function foodInfo(info) {
-  document.querySelector(".notification").classList.remove("hide");
+  document.querySelector(".mainFood").classList.remove("hide");
   document.querySelector(".firstSectionAPI").classList.remove("hide");
   document.querySelector(".prevSearch").classList.remove("hide");
+  document.querySelector(".footer").classList.remove("hide");
 
   document.getElementById("foodName").innerHTML = "";
   document.getElementById("nutrientsInfo").innerHTML = "";
@@ -132,8 +144,10 @@ function findRecipe(food) {
   }
 }
 
+var recipeButtonClickList = [];
+
 // Putting the fetched information from the 2nd API onto the page making it visible to the user.
-// This first part clears the old information, making room for only the new information to be visible.
+  // This first part clears the old information, making room for only the new information to be visible.
 function firstAPIInfo(info) {
   document.getElementById("directions").innerHTML = "";
   document.getElementById("ingredientLines").innerHTML = "";
@@ -206,7 +220,6 @@ function firstAPIInfo(info) {
   }
 
   //   Displaying the diet labels
-  document.getElementById("dietLabels").innerHTML = "";
   var dietTypeTitle = document.createElement("h2");
   dietTypeTitle.innerHTML = "Diet Type(s):";
   document.getElementById("dietLabels").appendChild(dietTypeTitle);
@@ -224,8 +237,7 @@ function firstAPIInfo(info) {
   }
 
   //  Displaying the health labels
-  document.getElementById("healthLabels").innerHTML = "";
-  var healthLabelsTitle = document.createElement("h2");
+    var healthLabelsTitle = document.createElement("h2");
   healthLabelsTitle.innerHTML = "Health Labels:";
   document.getElementById("healthLabels").appendChild(healthLabelsTitle);
   document.getElementById("healthLabels").classList.add("foodInformation");
@@ -242,7 +254,6 @@ function firstAPIInfo(info) {
   }
 
   //  Displaying additional recipes.
-  document.getElementById("recipeList").innerHTML = "";
   var recipeListTitle = document.createElement("h2");
   recipeListTitle.innerHTML = "Click Below for Additional Recipes:";
   document.getElementById("recipeList").appendChild(recipeListTitle);
@@ -257,7 +268,7 @@ function firstAPIInfo(info) {
     recipeButton.setAttribute("data-recipe", recipes);
     var recipeButtonBox = document.createTextNode(recipes);
     recipeButtonList.appendChild(recipeButtonItems);
-    recipeButtonItems.appendChild(recipeButton);
+    recipeButtonList.appendChild(recipeButton);
     recipeButton.appendChild(recipeButtonBox);
     document.getElementById("recipeList").appendChild(recipeButtonList);
 
@@ -269,15 +280,15 @@ function firstAPIInfo(info) {
       findFoodFacts(recipeButtonClick);
       findRecipe(recipeButtonClick);
 
-      localStorage.setItem("recipe", recipeButtonClick);
+      recipeButtonClickList.push(recipeButtonClick); 
+      localStorage.setItem("recipe", JSON.stringify(recipeButtonClickList));
       getSavedRecipe();
     };
 
-    console.log(info.hits[i].recipe.label);
-    }
-
-  // Alphabetize the li elements inside of an ul element. Courtesy of w3Schools.com
-  function sortList(list) {
+    console.log(recipeButtonClickList);
+  }
+   // Alphabetize the li elements inside of an ul element. Courtesy of w3Schools.com
+   function sortList(list) {
     var list;
     var i;
     var switching;
@@ -308,25 +319,45 @@ function firstAPIInfo(info) {
   sortList("dietLabels");
   sortList("healthLabels");
   sortList("recipeList");
+  sortList("savedRecipeBox");
 }
 
 // Uses local storage to retrieve recipes that were searched for and save them onto the page for easy researching.
 function getSavedRecipe() {
-  var savedRecipe = localStorage.getItem("recipe");
+    document.getElementById("savedRecipeBox").innerHTML = "";
+  var oldSearch = "";
+  var savedRecipe = JSON.parse(localStorage.getItem("recipe"));
   console.log(savedRecipe);
 
+  for (var i = 0; i < savedRecipe.length; i++) {
+    oldSearch = savedRecipe[i];
+
   var recipeButton = document.createElement("BUTTON");
-  var recipeButtonBtn = document.createTextNode(savedRecipe);
+  var recipeButtonBtn = document.createTextNode(oldSearch);
   recipeButton.appendChild(recipeButtonBtn);
   document.getElementById("savedRecipeBox").appendChild(recipeButton);
 
-  recipeButton.onclick = function (recipe) {
-    recipe = savedRecipe;
+  recipeButton.onclick = function () {
+    // recipe = savedRecipe;
 
-    findFoodFacts(recipe);
-    findRecipe(recipe);
+    // findFoodFacts(recipe);
+    // findRecipe(recipe);
+
+    findFoodFacts(this.innerText);
+    findRecipe(this.innerText);
 
     console.log(savedRecipe);
   };
-  sortList("recipeList");
 }
+//   sortList("savedRecipeBox");
+}
+
+// Button to clear the recipes in the local storage and the saved recipe buttons on the page..
+var clearRecipeLS = document.getElementById("clearRecipe");
+clearRecipeLS.addEventListener("click", function() {
+  localStorage.clear();
+  var removeRecipeBtn = document.getElementById("savedRecipeBox");
+  while (removeRecipeBtn.hasChildNodes()) {
+    removeRecipeBtn.removeChild(removeRecipeBtn.firstChild);
+  }
+});
