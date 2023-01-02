@@ -30,18 +30,11 @@
         </div>
       </div>
     </div>
-
-    <button id="clearRecipe">Clear Saved Recipes</button>
-
-    <div class="col-sm my-5 text-center prevSearch">
-      <h3 class="column is-one-quarter">Previously Searched Recipes</h3>
-      <div id="savedRecipeBox"></div>
-    </div>
   </header>
 
   <main class=" columns foodNutrition">
-        
-        
+
+
     <div class="container makeBorders notification mainFood hide column is-two-thirds">
       <div class="column is-full is-center">
         <p id="foodName"></p>
@@ -54,13 +47,18 @@
           </div>
         </div>
       </div>
-      
+
   </main>
 
   <section>
     <div id="foodStuff"></div>
   </section>
 
+  <div class="col-sm my-5 text-center hide prevSearch">
+    <h3 id="textPrev">Previously Searched Recipes</h3>
+    <div id="savedRecipeBox"></div>
+    <button id="clearRecipe">Clear Saved Recipes</button>
+  </div>
 
   <section id="firstAPI" class="section firstSectionAPI hide has-background-light">
     <div id="response-text" class="tile is-ancestor">
