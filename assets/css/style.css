@@ -1,20 +1,15 @@
 html {
-
     content: "";
     background-image: url(../images/fruitVeggie.png);
 }
 
 header {
     margin: 5%;
-    
 }
-
 
 body {
     height: 100%;
     width: 100%;
-    
-
 }
 
 header h1 {
@@ -174,8 +169,6 @@ a:hover {
     font-weight: bold;
     border: 5px solid white;
     cursor: pointer;
-
-
     margin-left: 15px;
     padding: 10px;
 }
@@ -184,7 +177,6 @@ a:hover {
     font-size: 30px;
     color:rgb(0, 0, 0);
     font-weight: bold;
-
 }
 
 #savedRecipeBox {

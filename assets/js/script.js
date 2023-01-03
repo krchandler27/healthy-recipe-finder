@@ -15,7 +15,6 @@ function foodSearch() {
   if (document.getElementById("foodItem").value === "") {
     return;
   } else {
-
   findFoodFacts(food);
   findRecipe(food);
   }
@@ -49,7 +48,6 @@ function findFoodFacts(food) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       foodInfo(data);
     });
 }
@@ -125,7 +123,6 @@ function findRecipe(food) {
   function getAPI(queryURL1) {
     fetch(queryURL1)
       .then(function (response) {
-        console.log(response);
         return response.json();
       })
       .then(function (data) {
@@ -134,7 +131,6 @@ function findRecipe(food) {
         myDiv.classList.add("myClass");
         myDiv.textContent = data.recipeName;
         document.querySelector("#response-text").appendChild(myDiv);
-        console.log(data);
 
         firstAPIInfo(data);
       });
@@ -169,7 +165,6 @@ function firstAPIInfo(info) {
   var ingredientsList = document.createElement("ul");
 
   for (var i = 0; i < info.hits[0].recipe.ingredientLines.length; i++) {
-    console.log(info.hits[0].recipe.ingredientLines.length);
 
     var ingredients = info.hits[0].recipe.ingredientLines[i];
     var ingredientInfo = document.createElement("li");
@@ -201,7 +196,6 @@ function firstAPIInfo(info) {
   var digestInfoList = document.createElement("ul");
 
   for (var i = 0; i < info.hits[0].recipe.digest.length; i++) {
-    console.log(info.hits[0].recipe.digest.length);
 
     var digestion =
       info.hits[0].recipe.digest[i].label +
@@ -224,7 +218,6 @@ function firstAPIInfo(info) {
   var dietInfoList = document.createElement("ul");
 
   for (var i = 0; i < info.hits[0].recipe.dietLabels.length; i++) {
-    console.log(info.hits[0].recipe.dietLabels.length);
     var dietTypes = info.hits[0].recipe.dietLabels[i];
     var dietInfo = document.createElement("li");
     var dietInfoBox = document.createTextNode(dietTypes);
@@ -241,7 +234,6 @@ function firstAPIInfo(info) {
   var healthInfoList = document.createElement("ul");
 
   for (var i = 0; i < info.hits[0].recipe.healthLabels.length; i++) {
-    console.log(info.hits[0].recipe.healthLabels.length);
     var health = info.hits[0].recipe.healthLabels[i];
     var healthInfo = document.createElement("li");
     var healthInfoBox = document.createTextNode(health);
@@ -273,8 +265,6 @@ function firstAPIInfo(info) {
       var recipeButtonClick = event.target.getAttribute("data-recipe");
       var elem = document.getElementById("firstAPI")
 
-      console.log(event.target.getAttribute("data-recipe"));
-      console.log(recipeButtonClick);
       findFoodFacts(recipeButtonClick);
       findRecipe(recipeButtonClick);
 
@@ -290,12 +280,7 @@ if (!recipeButtonClickList.includes(recipeButtonClick)) {
       localStorage.setItem("recipe", JSON.stringify(recipeButtonClickList));
       getSavedRecipe();
     };
-
-    console.log(recipeButtonClickList);
   }
-
-
-
 
   // Alphabetize the li elements inside of an ul element. Courtesy of w3Schools.com
   function sortList(list) {
@@ -337,7 +322,6 @@ function getSavedRecipe() {
   document.getElementById("savedRecipeBox").innerHTML = "";
   var oldSearch = "";
   var savedRecipe = JSON.parse(localStorage.getItem("recipe"));
-  console.log(savedRecipe);
 
   for (var i = 0; i < savedRecipe.length; i++) {
     oldSearch = savedRecipe[i];
@@ -348,19 +332,13 @@ function getSavedRecipe() {
     document.getElementById("savedRecipeBox").appendChild(recipeButton);
 
     recipeButton.onclick = function () {
-      // recipe = savedRecipe;
-
-      // findFoodFacts(recipe);
-      // findRecipe(recipe);
+    
       var element = document.getElementById("firstAPI")
       element.scrollIntoView();
       findFoodFacts(this.innerText);
       findRecipe(this.innerText);
-
-      console.log(savedRecipe);
     };
   }
-  //   sortList("savedRecipeBox");
 }
 
 // Button to clear the recipes in the local storage and the saved recipe buttons on the page..
