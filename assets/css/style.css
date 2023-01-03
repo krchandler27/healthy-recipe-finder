@@ -169,11 +169,22 @@ a:hover {
     margin-top: 2%;
     margin-bottom: 2%;
     background-color: rgb(129, 182, 104);
+    border-radius:25px;
     color: rgb(0, 0, 0);
     font-weight: bold;
     border: 5px solid white;
     cursor: pointer;
-    border-radius: 50px;
+
+
+    margin-left: 15px;
+    padding: 10px;
+}
+
+.prevSearch h2 {
+    font-size: 30px;
+    color:rgb(0, 0, 0);
+    font-weight: bold;
+
 }
 
 #savedRecipeBox {
@@ -212,6 +223,10 @@ footer {
 
 p ul {
     padding: 20px;
+}
+
+li {
+    padding-top: 10px;
 }
 
 #recipeList li {

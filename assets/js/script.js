@@ -278,9 +278,9 @@ function firstAPIInfo(info) {
       findFoodFacts(recipeButtonClick);
       findRecipe(recipeButtonClick);
 
-
+if (!recipeButtonClickList.includes(recipeButtonClick)) {
       recipeButtonClickList.push(recipeButtonClick);
-
+}
       elem.scrollIntoView();
 
       if (!recipeButtonClickList.includes(recipeButtonClick)) {
