@@ -144,7 +144,7 @@ function findRecipe(food) {
 var recipeButtonClickList = [];
 
 // Putting the fetched information from the 2nd API onto the page making it visible to the user.
-  // This first part clears the old information, making room for only the new information to be visible.
+// This first part clears the old information, making room for only the new information to be visible.
 function firstAPIInfo(info) {
   document.getElementById("directions").innerHTML = "";
   document.getElementById("ingredientLines").innerHTML = "";
@@ -271,19 +271,31 @@ function firstAPIInfo(info) {
 
     recipeButton.onclick = function () {
       var recipeButtonClick = event.target.getAttribute("data-recipe");
+      var elem = document.getElementById("textPrev")
 
       console.log(event.target.getAttribute("data-recipe"));
       console.log(recipeButtonClick);
       findFoodFacts(recipeButtonClick);
       findRecipe(recipeButtonClick);
 
+
       recipeButtonClickList.push(recipeButtonClick);
+
+      elem.scrollIntoView();
+
+      if (!recipeButtonClickList.includes(recipeButtonClick)) {
+        recipeButtonClickList.push(recipeButtonClick);
+      }
+
       localStorage.setItem("recipe", JSON.stringify(recipeButtonClickList));
       getSavedRecipe();
     };
 
     console.log(recipeButtonClickList);
   }
+
+
+
 
   // Alphabetize the li elements inside of an ul element. Courtesy of w3Schools.com
   function sortList(list) {
