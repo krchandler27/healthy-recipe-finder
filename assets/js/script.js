@@ -352,7 +352,8 @@ function getSavedRecipe() {
 
       // findFoodFacts(recipe);
       // findRecipe(recipe);
-
+      var element = document.getElementById("firstAPI")
+      element.scrollIntoView();
       findFoodFacts(this.innerText);
       findRecipe(this.innerText);
 
