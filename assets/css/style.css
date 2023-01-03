@@ -3,12 +3,15 @@ html {
     margin-right: 10%;
     margin-top: 2%;
     margin-bottom: 0%;
+    background-image: url("../images/bluewood2.jpg");
+    
 }
 
 
 body {
     height: 100%;
     width: 100%;
+    
 }
 
 header h1 {
