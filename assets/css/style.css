@@ -1,7 +1,7 @@
 html {
 
     content: "";
-    background-image: url(./blueWood.png);
+    background-image: url(../images/bluewood2.jpg);
 }
 
 header {
@@ -11,7 +11,6 @@ header {
     margin-right: 10%;
     margin-top: 2%;
     margin-bottom: 0%;
-    background-image: url("../images/bluewood2.jpg");
     
 }
 
