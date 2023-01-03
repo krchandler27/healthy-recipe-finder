@@ -15,8 +15,9 @@ N/A
 ## Usage
 To find recipes that incorporate a searched food item. To find the ingredients and the directions on how to make the recipe. Then to find nutritional information for the recipe as well as the main food item for the dish.
 
-![image1](https://user-images.githubusercontent.com/116527506/210151611-28bbff4d-bed8-4321-9761-085569dbe2e7.JPG)
-![image2](https://user-images.githubusercontent.com/116527506/210151686-587e9ec2-3a9a-4036-8a4d-244bee9b5e4c.JPG)
+![Capture1](https://user-images.githubusercontent.com/116527506/210296049-e9f7b979-547a-4fe0-ae23-35921a85b07a.JPG)
+![Capture2](https://user-images.githubusercontent.com/116527506/210296055-593325d7-02de-4fd4-b3f3-0bcf26c37c03.JPG)
+![Capture3](https://user-images.githubusercontent.com/116527506/210296057-cb258421-8310-40df-88f9-f2f5c747369f.JPG)
 
 ## Credits
 
