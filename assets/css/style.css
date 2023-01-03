@@ -5,12 +5,7 @@ html {
 }
 
 header {
-    margin: 10%;
-
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 2%;
-    margin-bottom: 0%;
+    margin: 5%;
     
 }
 
@@ -23,15 +18,14 @@ body {
 }
 
 header h1 {
-    color: rgb(0, 0, 0);
-    font-size: 40px;
+    color: rgb(255, 255, 255);
+    font-size: 60px;
     font-weight: bolder;
-    margin-left: 2%;
     text-align: center;
-    background-color: rgb(103, 145, 84);
-    margin-bottom: 2%;
-    margin-top: 1%;
+    background-color: none;
+    margin: 30px;
     border-radius: 50px;
+    -webkit-text-stroke: 3px black;
 }
 
 .prevSearch h3 {
@@ -179,6 +173,7 @@ a:hover {
     font-weight: bold;
     border: 5px solid white;
     cursor: pointer;
+    border-radius: 50px;
 }
 
 #savedRecipeBox {
